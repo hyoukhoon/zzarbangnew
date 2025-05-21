@@ -1,7 +1,11 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\BoardController;
+use App\Http\Controllers\MemberController;
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\ClassController;
+use App\Http\Controllers\MailController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
