@@ -12,8 +12,6 @@ use Illuminate\Support\Facades\Validator;
 class AdminController extends Controller
 {
     public function index(){
-        print_r(Auth::user());
-        exit;
         if(Auth::user()->isAuth<10){
             return view('adminarea.login');
         }else{
