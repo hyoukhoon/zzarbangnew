@@ -16,3 +16,11 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('index');
 });
+
+//Admin
+Route::get('/adminarea/login', function () {
+    return view('/adminarea/login');
+});
+Route::get('/adminarea', [AdminController::class, 'index'])->name('adminarea.index');
+Route::get('/adminarea/classroom', [AdminController::class, 'classroom'])->name('adminarea.classroom');
+Route::POST('/adminarea/cateup', [AdminController::class, 'cateup'])->name('adminarea.cateup');
