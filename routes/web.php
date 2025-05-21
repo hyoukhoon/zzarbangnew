@@ -1,11 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\BoardController;
 use App\Http\Controllers\MemberController;
-use App\Http\Controllers\AdminController;
-use App\Http\Controllers\ClassController;
-use App\Http\Controllers\MailController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -26,6 +23,3 @@ Route::get('/adminarea/login', function () {
     return view('/adminarea/login');
 });
 Route::post('/adminloginok', [MemberController::class, 'adminloginok']) -> name('admin.loginok');
-Route::get('/adminarea', [AdminController::class, 'index'])->name('adminarea.index');
-Route::get('/adminarea/classroom', [AdminController::class, 'classroom'])->name('adminarea.classroom');
-Route::POST('/adminarea/cateup', [AdminController::class, 'cateup'])->name('adminarea.cateup');
