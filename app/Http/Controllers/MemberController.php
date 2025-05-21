@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\Members;
+use App\Models\Member;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
@@ -46,8 +46,8 @@ class MemberController extends Controller
             exit;
         }
 
-        $rs1 = Members::where('email',$request->email)->count();
-        $rs2 = Members::where('username',$request->username)->count();
+        $rs1 = Member::where('email',$request->email)->count();
+        $rs2 = Member::where('username',$request->username)->count();
 
         if ($rs1 or $rs2) {
             return response()->json(array('msg'=> "닉네임이나 이메일이 이미 사용중입니다. 다른 닉네임이나 이메일을 입력해 주세요.", 'result'=>false), 200);
@@ -64,7 +64,7 @@ class MemberController extends Controller
             'username' => $request->username
         );
 
-        $rs = Members::create($form_data);
+        $rs = Member::create($form_data);
         
         if($rs){
             return response()->json(array('msg'=> "가입해 주셔서 감사합니다.", 'result'=>true), 200);
@@ -76,7 +76,7 @@ class MemberController extends Controller
     public function emailcheck(Request $request){
         $email = $request->email;
         
-        $rs = Members::where('email',$email)->count();
+        $rs = Member::where('email',$email)->count();
         if($rs){
             return response()->json(array('msg'=> "이미 사용중인 이메일입니다.", 'result'=>false), 200);
         }else{
@@ -87,7 +87,7 @@ class MemberController extends Controller
     public function usernamecheck(Request $request){
         $username = $request->username;
         
-        $rs = Members::where('username',$username)->count();
+        $rs = Member::where('username',$username)->count();
         if($rs){
             return response()->json(array('msg'=> "이미 사용중인 닉네임입니다.", 'result'=>false), 200);
         }else{
@@ -98,7 +98,7 @@ class MemberController extends Controller
     public function finduserid(Request $request){
         $username = $request->username;
         
-        $rs = Members::where('username', $username)->first();
+        $rs = Member::where('username', $username)->first();
         if($rs){
             return response()->json(array('msg'=> $username."님의 아이디는 ".$rs->email." 입니다", 'result'=>true), 200);
         }else{
@@ -109,7 +109,7 @@ class MemberController extends Controller
     public function passreset(Request $request){
         $email = $request->email;
         
-        $rs = Members::where('email', $email)->first();
+        $rs = Member::where('email', $email)->first();
         if($rs){
             return response()->json(array('msg'=> "입력하신 이메일로 비밀번호를 보내드렸습니다. 이메일을 확인해 주십시오. 이메일이 안오면 스팸함도 확인해 주십시오.", 'result'=>true), 200);
         }else{
@@ -134,7 +134,7 @@ class MemberController extends Controller
         $oldpassword = hash('sha512',$oldpassword);
         $password = $request->password;
         
-        $rs = Members::where('passwd', $oldpassword)->first();
+        $rs = Member::where('passwd', $oldpassword)->first();
         if(!$rs){
             return response()->json(array('msg'=> "기존 비밀번호가 일치하지 않습니다. 다시 확인 해 주십시오.", 'result'=>false), 200);
             exit;
@@ -142,7 +142,7 @@ class MemberController extends Controller
         if(auth()->check()){
 
             $passwd = hash('sha512',$password);
-            $cs=Members::where('email', Auth::user()->email)->update(array('passwd' => $passwd));
+            $cs=Member::where('email', Auth::user()->email)->update(array('passwd' => $passwd));
             if($cs){
                 return response()->json(array('msg'=> "비밀번호를 변경했습니다.", 'result'=>true), 200);
             }else{
@@ -171,9 +171,9 @@ class MemberController extends Controller
             'passwd' => $passwd
         );
 
-        $ismember = Members::where($loginInfo)->first();
+        $ismember = Member::where($loginInfo)->first();
         if($ismember){
-            $istatus = Members::where($loginInfo)->where('status',1)->first();
+            $istatus = Member::where($loginInfo)->where('status',1)->first();
             if($istatus){
                 Auth::login($ismember, $remember);
                 return redirect("/");
@@ -201,7 +201,7 @@ class MemberController extends Controller
             'passwd' => $passwd
         );
 
-        $ismember = Members::where($loginInfo)->first();
+        $ismember = Member::where($loginInfo)->first();
         if($ismember){
             Auth::login($ismember, $remember);
             return redirect() -> route('adminarea.index');
