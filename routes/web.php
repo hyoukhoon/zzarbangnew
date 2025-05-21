@@ -23,3 +23,4 @@ Route::get('/adminarea/login', function () {
     return view('/adminarea/login');
 });
 Route::post('/adminloginok', [MemberController::class, 'adminloginok']) -> name('admin.loginok');
+Route::get('/adminarea', [AdminController::class, 'index'])->name('adminarea.index');
