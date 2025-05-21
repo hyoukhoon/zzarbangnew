@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Validator;
 class AdminController extends Controller
 {
     public function index(){
-        var_dump(Auth::user());
+        print_r(Auth::user());
         exit;
         if(Auth::user()->memberlevels<10){
             return view('adminarea.login');
