@@ -14,7 +14,7 @@ class AdminController extends Controller
     public function index(){
         print_r(Auth::user());
         exit;
-        if(Auth::user()->memberlevels<10){
+        if(Auth::user()->isAuth<10){
             return view('adminarea.login');
         }else{
             return view('adminarea.index');
@@ -22,7 +22,7 @@ class AdminController extends Controller
     }
 
     public function classroom(){
-        if(Auth::user()->memberlevels<10){
+        if(Auth::user()->isAuth<10){
             return view('adminarea.login');
         }else{
             $cls = Classrooms::orderBy('id','desc')->paginate(20);;
