@@ -1,31 +1,10 @@
 <?php
 
 namespace App\Models;
-
+use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Database\Eloquent\Model;
 
-/**
- * @property int      $num
- * @property int      $resetpass
- * @property string   $uid
- * @property string   $email
- * @property string   $mobile
- * @property string   $passwd
- * @property string   $nickName
- * @property string   $signtype
- * @property string   $photo
- * @property string   $loginIp
- * @property string   $remember_token
- * @property boolean  $isPush
- * @property boolean  $isEmail
- * @property boolean  $ismember
- * @property boolean  $wronglogin
- * @property boolean  $isAuth
- * @property DateTime $regDate
- * @property DateTime $lastLogin
- * @property DateTime $passUpDate
- */
-class Member extends Model
+class Member extends Authenticatable
 {
     /**
      * The database table used by the model.
