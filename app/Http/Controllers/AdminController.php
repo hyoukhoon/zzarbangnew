@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\DB;
 use App\Models\Member;
 use App\Models\Cboard;
 use App\Models\Memo;
+use App\Models\Qna;
+use App\Models\Police;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
@@ -21,10 +23,10 @@ class AdminController extends Controller
             $todayboardscnt = Cboard::where("isdisp",1)->whereRaw("left(reg_date,10)='".$tdate."'")->count();
             $todaymemocnt = Memo::where("status",1)->whereRaw("left(regdate,10)='".$tdate."'")->count();
             $todaymembercnt = Member::where("isAuth",0)->whereRaw("left(regDate,10)='".$tdate."'")->count();
-            $totalmembercnt = 10;
-            $qnacnt = 10;
-            $boardreportscnt = 10;
-            $memoreportscnt = 10;
+            $totalmembercnt = Member::where("isAuth",0)->count();
+            $qnacnt = Qna::where("status",1)->whereRaw("left(regdate,10)='".$tdate."'")->count();
+            $boardreportscnt = Police::where("status",1)->whereRaw("boardid>0")->count();
+            $memoreportscnt = Police::where("status",1)->whereRaw("memoid>0")->count();
 
             return view('adminarea.index', ['todayboardscnt' => $todayboardscnt,'todaymemocnt' => $todaymemocnt,'todaymembercnt' => $todaymembercnt,'totalmembercnt' => $totalmembercnt,'qnacnt' => $qnacnt,'boardreportscnt' => $boardreportscnt,'memoreportscnt' => $memoreportscnt]);
         }
