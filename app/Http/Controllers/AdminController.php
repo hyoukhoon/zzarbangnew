@@ -15,7 +15,11 @@ class AdminController extends Controller
         if(Auth::user()->isAuth<10){
             return view('adminarea.login');
         }else{
-            return view('adminarea.index', ['todayboardscnt' => $todayboardscnt,'todaymemocnt' => $todaymemocnt,'todaymembercnt' => $todaymembercnt,'totalmembercnt' => $totalmembercnt,'qnacnt' => $qnacnt,'boardreportscnt' => $boardreportscnt,'memoreportscnt' => $memoreportscnt]);
+            
+            $todayboardscnt = 10;
+            return view('adminarea.index', ['todayboardscnt' => $todayboardscnt]);
+
+            //return view('adminarea.index', ['todayboardscnt' => $todayboardscnt,'todaymemocnt' => $todaymemocnt,'todaymembercnt' => $todaymembercnt,'totalmembercnt' => $totalmembercnt,'qnacnt' => $qnacnt,'boardreportscnt' => $boardreportscnt,'memoreportscnt' => $memoreportscnt]);
         }
     }
 
