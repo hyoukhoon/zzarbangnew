@@ -11,7 +11,7 @@
                 <div class="card bg-primary text-white mb-4">
                     <div class="card-body">Today Boards Counts</div>
                     <div class="card-footer d-flex align-items-center justify-content-between">
-                        <a class="small text-white stretched-link" href="boards.php"><H3><?php echo $todayboardscnt;?></H3></a>
+                        <a class="small text-white stretched-link" href="boards.php"><H3><?php echo number_format($todayboardscnt);?></H3></a>
                         <div class="small text-white"><i class="fas fa-angle-right"></i></div>
                     </div>
                 </div>
@@ -20,7 +20,7 @@
                 <div class="card bg-warning text-white mb-4">
                     <div class="card-body">Today Memo Counts</div>
                     <div class="card-footer d-flex align-items-center justify-content-between">
-                        <a class="small text-white stretched-link" href="replies.php"><H3><?php echo $todaymemocnt;?></H3></a>
+                        <a class="small text-white stretched-link" href="replies.php"><H3><?php echo number_format($todaymemocnt);?></H3></a>
                         <div class="small text-white"><i class="fas fa-angle-right"></i></div>
                     </div>
                 </div>
