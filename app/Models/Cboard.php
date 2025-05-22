@@ -1,45 +1,8 @@
 <?php
-
 namespace App\Models;
-
+use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Database\Eloquent\Model;
 
-/**
- * @property int      $num
- * @property int      $good
- * @property int      $bad
- * @property int      $cnt
- * @property int      $pnum
- * @property int      $level
- * @property int      $step
- * @property int      $memo_cnt
- * @property int      $notice
- * @property int      $notviewmemo
- * @property int      $isimg
- * @property int      $isdisp
- * @property string   $name
- * @property string   $uid
- * @property string   $email
- * @property string   $subject
- * @property string   $content
- * @property string   $url
- * @property string   $fn_name1
- * @property string   $fn_name2
- * @property string   $file_list
- * @property string   $thumb
- * @property string   $videourl
- * @property string   $attachfile
- * @property string   $multi
- * @property string   $ip
- * @property string   $mobile
- * @property string   $gubun
- * @property string   $passwd
- * @property string   $cate
- * @property DateTime $reg_date
- * @property DateTime $memo_date
- * @property DateTime $edit_date
- * @property boolean  $iswarning
- */
 class Cboard extends Model
 {
     /**

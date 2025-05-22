@@ -5,6 +5,7 @@ use Illuminate\Http\File;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\DB;
 use App\Models\Member;
+use App\Models\Cboard;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
@@ -16,7 +17,7 @@ class AdminController extends Controller
             return view('adminarea.login');
         }else{
             
-            $todayboardscnt = 10;
+            $todayboardscnt = Cboard::where('disp',1)->count();
             $todaymemocnt = 10;
             $todaymembercnt = 10;
             $totalmembercnt = 10;
