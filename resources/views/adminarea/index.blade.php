@@ -87,10 +87,15 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td></td>
-                            <td></td>
-                        </tr>
+                        @foreach ($boards as $key => $board)
+                            <tr>
+                                <td><a href="/boards/show/{{$board->num}}/{{$pagenumber}}">{{$board->subject}}</a>
+                                    {{ $board->memo_cnt?"[".$board->memo_cnt."]":"" }}
+                                </td>
+                                <td>{{$board->cnt}}</td>
+                                <td>{{ disptime($board->reg_date) }}</td>
+                            </tr>
+                        @endforeach
                     </tbody>
                 </table>
             </div>

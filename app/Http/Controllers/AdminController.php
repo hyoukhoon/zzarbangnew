@@ -27,8 +27,9 @@ class AdminController extends Controller
             $qnacnt = Qna::where("status",1)->whereRaw("left(regdate,10)='".$tdate."'")->count();
             $boardreportscnt = Police::where("status",1)->whereRaw("boardid>0")->count();
             $memoreportscnt = Police::where("status",1)->whereRaw("memoid>0")->count();
+            $boards = Cboard::where("isdisp",1)->latest('regdate')->paginate(10);
 
-            return view('adminarea.index', ['todayboardscnt' => $todayboardscnt,'todaymemocnt' => $todaymemocnt,'todaymembercnt' => $todaymembercnt,'totalmembercnt' => $totalmembercnt,'qnacnt' => $qnacnt,'boardreportscnt' => $boardreportscnt,'memoreportscnt' => $memoreportscnt]);
+            return view('adminarea.index', ['boards' =>$boards, 'todayboardscnt' => $todayboardscnt,'todaymemocnt' => $todaymemocnt,'todaymembercnt' => $todaymembercnt,'totalmembercnt' => $totalmembercnt,'qnacnt' => $qnacnt,'boardreportscnt' => $boardreportscnt,'memoreportscnt' => $memoreportscnt]);
         }
     }
 
