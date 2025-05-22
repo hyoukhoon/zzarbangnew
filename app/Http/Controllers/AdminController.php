@@ -17,7 +17,7 @@ class AdminController extends Controller
             return view('adminarea.login');
         }else{
             
-            $todayboardscnt = Cboard::where('disp',1)->count();
+            $todayboardscnt = Cboard::where('isdisp',1)->count();
             $todaymemocnt = 10;
             $todaymembercnt = 10;
             $totalmembercnt = 10;
