@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\DB;
 use App\Models\Member;
 use App\Models\Cboard;
+use App\Models\Memo;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
@@ -18,7 +19,7 @@ class AdminController extends Controller
         }else{
             $tdate = date("Y-m-d");
             $todayboardscnt = Cboard::where("isdisp",1)->whereRaw("left(reg_date,10)='".$tdate."'")->count();
-            $todaymemocnt = 10;
+            $todaymemocnt = Memo::where("status",1)->whereRaw("left(reg_date,10)='".$tdate."'")->count();
             $todaymembercnt = Member::where("isAuth",0)->whereRaw("left(regDate,10)='".$tdate."'")->count();
             $totalmembercnt = 10;
             $qnacnt = 10;
