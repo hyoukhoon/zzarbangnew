@@ -19,7 +19,7 @@ class AdminController extends Controller
             $tdate = date("Y-m-d");
             $todayboardscnt = Cboard::where('isdisp',1)->whereRaw('left(reg_date,10)='.$tdate)->count();
             $todaymemocnt = 10;
-            $todaymembercnt = 10;
+            $todaymembercnt = Member::where('isAuth',0)->whereRaw('left(reg_date,10)='.$tdate)->count();
             $totalmembercnt = 10;
             $qnacnt = 10;
             $boardreportscnt = 10;
