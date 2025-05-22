@@ -17,9 +17,14 @@ class AdminController extends Controller
         }else{
             
             $todayboardscnt = 10;
-            return view('adminarea.index', ['todayboardscnt' => $todayboardscnt]);
+            $todaymemocnt = 10;
+            $todaymembercnt = 10;
+            $totalmembercnt = 10;
+            $qnacnt = 10;
+            $boardreportscnt = 10;
+            $memoreportscnt = 10;
 
-            //return view('adminarea.index', ['todayboardscnt' => $todayboardscnt,'todaymemocnt' => $todaymemocnt,'todaymembercnt' => $todaymembercnt,'totalmembercnt' => $totalmembercnt,'qnacnt' => $qnacnt,'boardreportscnt' => $boardreportscnt,'memoreportscnt' => $memoreportscnt]);
+            return view('adminarea.index', ['todayboardscnt' => $todayboardscnt,'todaymemocnt' => $todaymemocnt,'todaymembercnt' => $todaymembercnt,'totalmembercnt' => $totalmembercnt,'qnacnt' => $qnacnt,'boardreportscnt' => $boardreportscnt,'memoreportscnt' => $memoreportscnt]);
         }
     }
 
