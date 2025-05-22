@@ -19,7 +19,7 @@ class AdminController extends Controller
         }else{
             $tdate = date("Y-m-d");
             $todayboardscnt = Cboard::where("isdisp",1)->whereRaw("left(reg_date,10)='".$tdate."'")->count();
-            $todaymemocnt = Memo::where("status",1)->whereRaw("left(reg_date,10)='".$tdate."'")->count();
+            $todaymemocnt = Memo::where("status",1)->whereRaw("left(regdate,10)='".$tdate."'")->count();
             $todaymembercnt = Member::where("isAuth",0)->whereRaw("left(regDate,10)='".$tdate."'")->count();
             $totalmembercnt = 10;
             $qnacnt = 10;
