@@ -17,7 +17,7 @@ class AdminController extends Controller
             return view('adminarea.login');
         }else{
             $tdate = date("Y-m-d");
-            $todayboardscnt = Cboard::where('isdisp',1)->whereRaw('left(reg_date,10)',$tdate)->count();
+            $todayboardscnt = Cboard::where('isdisp',1)->whereRaw(left('reg_date',10),$tdate)->count();
             $todaymemocnt = 10;
             $todaymembercnt = 10;
             $totalmembercnt = 10;
