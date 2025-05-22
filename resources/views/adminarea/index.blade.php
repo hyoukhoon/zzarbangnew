@@ -87,6 +87,9 @@
                         </tr>
                     </thead>
                     <tbody>
+                        <?php
+                            $pagenumber = $_GET["page"]??1;
+                        ?>
                         @foreach ($boards as $key => $board)
                             <tr>
                                 <td><a href="/boards/show/{{$board->num}}/{{$pagenumber}}">{{$board->subject}}</a>
