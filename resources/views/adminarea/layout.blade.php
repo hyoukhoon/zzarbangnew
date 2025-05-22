@@ -8,7 +8,7 @@
         <meta name="author" content="" />
         <title>짜르방Admin</title>
         <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
-        <link href="/adminarea/css/styles.css" rel="stylesheet" />
+        <link href="/admincss/styles.css" rel="stylesheet" />
         <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
 		<script  src="https://code.jquery.com/jquery-latest.min.js"></script>
 		<link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
