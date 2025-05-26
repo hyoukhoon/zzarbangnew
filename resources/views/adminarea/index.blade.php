@@ -96,7 +96,7 @@
                                     {{ $board->memo_cnt?"[".$board->memo_cnt."]":"" }}
                                 </td>
                                 <td>{{$board->cnt}}</td>
-                                <td>{{ echo date("Y-m-d H:i:s") }} / {{ $board->reg_date }} / {{ disptime($board->reg_date) }}</td>
+                                <td>{{ $board->reg_date }} / {{ disptime($board->reg_date) }}</td>
                             </tr>
                         @endforeach
                     </tbody>
