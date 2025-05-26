@@ -15,8 +15,7 @@ function disptime($regdate){
         $dispdates = date("Y-m-d",strtotime($regdate));
     }
 
-    //return $dispdates;
-    return date("Y-m-d H:i:s");
+    return $dispdates;
 
 }
 ?>
