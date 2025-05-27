@@ -36,7 +36,9 @@ class AdminController extends Controller
 
     public function elatest(){
         $rs = Ozzal::where("multi","ozzal")->first();
-        print_r($rs);
+        echo "<pre>";
+        print_r($rs->getMeta()->toArray());
+        echo "</pre>";
     }
 
     public function logout(){
