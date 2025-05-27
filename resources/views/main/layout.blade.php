@@ -100,8 +100,7 @@
     
     <!-- Custom styles for this template -->
     <link href="/assets/offcanvas-navbar.css" rel="stylesheet">
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3926380236997271"
-     crossorigin="anonymous"></script><!-- adsense -->
+
   </head>
   <body class="bg-light">
     
