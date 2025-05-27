@@ -15,9 +15,6 @@ use App\Http\Controllers\AdminController;
 |
 */
 
-Route::get('/', function () {
-    return view('index');
-});
 
 //Admin
 Route::get('/adminarea/login', function () {
@@ -26,4 +23,8 @@ Route::get('/adminarea/login', function () {
 Route::post('/adminloginok', [MemberController::class, 'adminloginok']) -> name('admin.loginok');
 Route::get('/adminarea', [AdminController::class, 'index'])->name('adminarea.index');
 
+//test
 Route::get('/elatest', [AdminController::class, 'elatest'])->name('adminarea.elatest');
+
+//main
+Route::get('/', [MainController::class, 'index'])->name('main.index');
