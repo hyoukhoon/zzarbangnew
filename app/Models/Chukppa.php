@@ -7,7 +7,7 @@ use PDPhilip\Elasticsearch\Eloquent\Model;
 class Chukppa extends Model
 {
     protected $connection = 'elasticsearch';
-    protected $table = 'Chukppa';
+    protected $table = 'chukppa';
 }
 
 ?>
