@@ -37,7 +37,9 @@ class AdminController extends Controller
     public function elatest(){
         $rs = Ozzal::where("multi","ozzal")->first();
         echo "<pre>";
-        print_r($rs->getMeta());
+        print_r($rs->info());
+        $info=$rs->info();
+        response()->json($info);
         echo "</pre>";
     }
 
