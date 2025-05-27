@@ -31,15 +31,7 @@
  <link href="/assets/dist/css/bootstrap.min.css" rel="stylesheet">
  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
-<!-- Google tag (gtag.js) 애널리틱스-->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-JJNC7Z4Y9S"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
 
-  gtag('config', 'G-JJNC7Z4Y9S');
-</script>
 <script  src="https://code.jquery.com/jquery-latest.min.js"></script>
     <style>
 	footer {
