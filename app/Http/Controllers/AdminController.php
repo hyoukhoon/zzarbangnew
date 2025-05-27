@@ -35,10 +35,10 @@ class AdminController extends Controller
     }
 
     public function elatest(){
-        $rs = Ozzal::where("multi","ozzal")->first();
+        $rs = Ozzal::where("multi","ozzal")->latest('site_reg_date')->paginate(20);
         echo "<pre>";
         print_r($rs);
-        print_r($rs->subject);
+        //print_r($rs->subject);
         echo "</pre>";
     }
 
