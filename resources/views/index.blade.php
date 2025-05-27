@@ -1,4 +1,4 @@
-@extends('adminarea.layout')
+@extends('main.layout')
 @section('content')
 
 메인
