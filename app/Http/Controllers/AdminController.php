@@ -9,6 +9,7 @@ use App\Models\Cboard;
 use App\Models\Memo;
 use App\Models\Qna;
 use App\Models\Police;
+use App\Models\Ozzal;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
@@ -33,14 +34,9 @@ class AdminController extends Controller
         }
     }
 
-    public function classroom(){
-        if(Auth::user()->isAuth<10){
-            return view('adminarea.login');
-        }else{
-            $cls = Classrooms::orderBy('id','desc')->paginate(20);;
-            $cates = DB::table('categories')->get();
-            return view('adminarea.classroom', ['cls' => $cls,'cates' => $cates]);
-        }
+    public function elatest(){
+        $rs = Ozzal::where("multi","ozzal")->first();
+        print_r($rs);
     }
 
     public function logout(){

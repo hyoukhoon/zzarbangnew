@@ -25,3 +25,5 @@ Route::get('/adminarea/login', function () {
 });
 Route::post('/adminloginok', [MemberController::class, 'adminloginok']) -> name('admin.loginok');
 Route::get('/adminarea', [AdminController::class, 'index'])->name('adminarea.index');
+
+Route::get('/elatest', [AdminController::class, 'elatest'])->name('adminarea.elatest');
