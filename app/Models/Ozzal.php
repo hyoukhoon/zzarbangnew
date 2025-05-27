@@ -6,7 +6,9 @@ use PDPhilip\Elasticsearch\Eloquent\Model;
 
 class Ozzal extends Model
 {
-    protected $connection = 'ozzal';
+    protected $connection = 'elasticsearch';
+    protected $table = 'ozzal';
+
 }
 
 ?>
