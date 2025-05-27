@@ -10,6 +10,7 @@ use App\Models\Memo;
 use App\Models\Qna;
 use App\Models\Police;
 use App\Models\Ozzal;
+use App\Models\Chukppa;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
@@ -35,7 +36,7 @@ class AdminController extends Controller
     }
 
     public function elatest(){
-        $rs = Ozzal::where("multi","ozzal")->latest('site_reg_date')->paginate(20);
+        $rs = Chukppa::where("multi","soccer")->latest('site_reg_date')->paginate(20);
         echo "<pre>";
         //print_r($rs);
         foreach($rs as $r){
