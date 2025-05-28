@@ -13,7 +13,7 @@ class MainController extends Controller
         $fromdate = now()->subDays(10)->format('Y/m/d'); // 예: 2025/05/21 00:00:00
         $nowdate   = now()->format('Y/m/d');  
         $hot = Ozzal::where("multi","ozzal")
-                    ->where("site_reg_date", ">", $fromdate)
+                    //->where("site_reg_date", ">", $fromdate)
                     //->whereDate("site_reg_date", "<", $nowdate)
                     //->whereBetween('site_reg_date', [$fromdate, $nowdate])
                     ->orderBy("site_cnt","desc")
