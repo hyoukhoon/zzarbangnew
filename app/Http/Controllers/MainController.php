@@ -31,7 +31,7 @@ class MainController extends Controller
             ],
             'sort' => [
                 ['site_cnt' => ['order' => 'desc']]
-            ],'from':0, 'size':5
+            ],'from'=>0, 'size'=>5
         ];
         
         $response = Ozzal::rawSearch($params, $optionsParams = []);
