@@ -12,20 +12,16 @@ class MainController extends Controller
 {
     public function index(){
 
-        $params = [
-            'index' => 'ozzal',
-            'body' => [
-                'query' => [
-                    'range' => [
-                        'site_reg_date' => [
-                            'gte' => '2025/05/18 00:00:00',
-                            'lte' => '2025/05/28 23:59:59',
-                            'format' => 'yyyy/MM/dd HH:mm:ss'
-                        ]
-                    ]
+        $params = { "query": { 
+            "bool": { 
+                "filter": [ { 
+                "terms": { 
+                    "multi": ["ozzal"] 
+                } 
+                } 
                 ]
-            ]
-        ];
+            } }
+        , "size": 50, "from": 0, "sort": { "site_reg_date":"desc" } }
         
         $response = Ozzal::rawSearch($params, $optionsParams = []);
         dd($response);
