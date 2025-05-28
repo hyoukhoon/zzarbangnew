@@ -13,8 +13,9 @@ class MainController extends Controller
         $fromdate=date("Y/m/d H:i:s", strtotime('-7 days'));
         $nowdate=date("Y/m/d H:i:s");
         $hot = Ozzal::where("multi","ozzal")
-                    ->whereDate("site_reg_date", ">", $fromdate)
-                    ->whereDate("site_reg_date", "<", $nowdate)
+                    //->whereDate("site_reg_date", ">", $fromdate)
+                    //->whereDate("site_reg_date", "<", $nowdate)
+                    ->whereBetween('site_reg_date', [$fromdate, $nowdate])
                     ->orderBy("site_cnt","desc")
                     ->paginate(5);
         return view("index",['boards' => $hot]);
