@@ -12,7 +12,7 @@ class MainController extends Controller
 {
     public function index(){
 
-        $params = { "query": { 
+        $params = ["query": { 
             "bool": { 
                 "filter": [ { 
                 "terms": { 
@@ -21,7 +21,7 @@ class MainController extends Controller
                 } 
                 ]
             } }
-        , "size": 50, "from": 0, "sort": { "site_reg_date":"desc" } };
+        , "size": 50, "from": 0, "sort": { "site_reg_date":"desc" } ];
         
         $response = Ozzal::rawSearch($params, $optionsParams = []);
         dd($response);
