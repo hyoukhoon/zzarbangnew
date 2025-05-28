@@ -25,13 +25,14 @@ class MainController extends Controller
                             ]
                         ]]
                     ]
+                ],
+                'sort' => [
+                    ['site_cnt' => ['order' => 'desc']]
                 ]
             ]
         ];
         
         $response = Ozzal::rawSearch($params, $optionsParams = []);
-        dd($response);
-
 
         $fromdate = now()->subDays(10)->format('Y/m/d'); // 예: 2025/05/21 00:00:00
         $nowdate   = now()->format('Y/m/d');  
@@ -43,7 +44,7 @@ class MainController extends Controller
                     ->paginate(5);
         //dd($fromdate, $nowdate);
         //dd($hot->toArray());
-        return view("index",['boards' => $hot]);
+        return view("index",['boards' => $response]);
     }
 
 }
