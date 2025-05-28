@@ -18,7 +18,7 @@ class MainController extends Controller
                     //->whereBetween('site_reg_date', [$fromdate, $nowdate])
                     ->orderBy("site_cnt","desc")
                     ->paginate(5);
-        dd($fromdate, $nowdate);
+        //dd($fromdate, $nowdate);
         dd($hot->toArray());
         return view("index",['boards' => $hot]);
     }
