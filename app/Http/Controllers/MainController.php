@@ -34,6 +34,10 @@ class MainController extends Controller
         
         $response = Ozzal::rawSearch($params, $optionsParams = []);
 
+        echo "<pre>";
+        print_r($response);
+        exit;
+
         $fromdate = now()->subDays(10)->format('Y/m/d'); // 예: 2025/05/21 00:00:00
         $nowdate   = now()->format('Y/m/d');  
         $hot = Ozzal::where("multi","ozzal")
