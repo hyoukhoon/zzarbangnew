@@ -34,20 +34,20 @@
   <div class="my-3 p-3 bg-body rounded shadow-sm">
     <h6 class="border-bottom pb-2 mb-0"><span class="material-symbols-outlined" style="vertical-align: text-bottom;">book</span> Today Zzal </h6>
 
-
+    @foreach ($today as $key => $t)
     <a class="page_link">
     <div class="d-flex text-muted pt-3">
 
 	  <div class="pb-3 mb-0 small lh-sm border-bottom w-100">
         <div class="d-flex justify-content-between">
-        <strong class="text-gray-dark">
+        <strong class="text-gray-dark">{{$t->subject}}<
 		</strong>
-		<a href="#"></a>
+		<a href="#">{{$t->site_cnt}}</a>
 		</div>
-		<span class="d-block"> / </span>
+		<span class="d-block"> {{$t->username}} / {{$t->site_reg_date}}</span>
 		</div>
     </div></a>
-
+    @endforeach
 
     <small class="d-block text-end mt-3">
       <ul class="pagination justify-content-center">
