@@ -10,11 +10,11 @@ use Illuminate\Validation\Rules\Password;
 class MainController extends Controller
 {
     public function index(){
-        $fromdate=date("Y/m/d H:i:s", strtotime('-7 days'));
-        $nowdate=date("Y/m/d H:i:s");
+        $fromdate=date("Y/m/d", strtotime('-7 days'));
+        $nowdate=date("Y/m/d");
         $hot = Ozzal::where("multi","ozzal")
                     //->whereRaw("site_reg_date > $fromdate and site_reg_date < $nowdate")
-                    ->whereBetween("site_reg_date", ["$fromdate", "$nowdate"])
+                    ->whereBetween("site_reg_date", [$fromdate, $nowdate])
                     ->orderBy("site_cnt","desc")
                     ->paginate(5);
         return view("index",['boards' => $hot]);
