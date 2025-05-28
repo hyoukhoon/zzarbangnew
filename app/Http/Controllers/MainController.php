@@ -34,10 +34,10 @@ class MainController extends Controller
             ],'from'=>0, 'size'=>5
         ];
         
-        $response = Ozzal::rawSearch($params, $optionsParams = []);
+        $hots = Ozzal::rawSearch($params, $optionsParams = []);
 
-        echo "<pre>";
-        print_r($response);
+        // echo "<pre>";
+        // print_r($response);
         //exit;
 
         
@@ -49,7 +49,7 @@ class MainController extends Controller
         //             ->paginate(5);
         //dd($fromdate, $nowdate);
         //dd($hot->toArray());
-        return view("index",['boards' => $response]);
+        return view("index",['hots' => $hots]);
     }
 
 }
