@@ -11,9 +11,11 @@ class MainController extends Controller
 {
     public function index(){
         $fromdate=date("Y/m/d H:i:s", strtotime('-7 days'));
+        $nowdate=date("Y/m/d H:i:s");
         $hot = Ozzal::where("multi","ozzal")
-                    //->where("site_reg_date", ">", $fromdate)
-                    ->orderBy("site_reg_date","desc")
+                    ->where("site_reg_date", ">", $fromdate)
+                    ->where("site_reg_date", "<", $nowdate)
+                    ->orderBy("site_cnt","desc")
                     ->paginate(5);
         return view("index",['boards' => $hot]);
     }
