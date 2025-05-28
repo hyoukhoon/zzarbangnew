@@ -33,3 +33,4 @@ Route::get('/', [MainController::class, 'index'])->name('main.index');
 
 //board
 Route::get('/boards', [CboardController::class, 'index'])->name('boards.index');
+Route::get('/boards/{id}', [CboardController::class, 'show'])->name('boards.show');

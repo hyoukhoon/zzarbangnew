@@ -7,7 +7,7 @@
       <h6 class="border-bottom pb-2 mb-0"><span class="material-symbols-outlined" style="vertical-align: text-bottom;">workspace_premium</span>게시판</h6>
   
     @foreach ($boards as $key => $b)
-        <a href="">
+        <a href="/boards/{{$b->site_num}}">
         <div class="d-flex text-muted pt-3">
             <div class="pb-3 mb-0 small lh-sm border-bottom w-100">
             <div class="d-flex justify-content-between">

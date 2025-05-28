@@ -26,4 +26,11 @@ class CboardController extends Controller
                     ->paginate(50);
         return view("boards.index",['boards' => $boards]);
     }
+
+    public function show($bid){
+        
+        $boards = Cboard::findOrFail($bid);
+        $boards->content = htmlspecialchars_decode($boards->content);
+        return view("boards.show",['boards' => $boards]);
+    }
 }
