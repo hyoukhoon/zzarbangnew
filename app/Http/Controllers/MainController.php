@@ -12,7 +12,6 @@ class MainController extends Controller
     public function index(){
         $fromdate=date("Y/m/d H:i:s", strtotime('-7 days'));
         $hot = Ozzal::where("multi","ozzal")
-                    ->where("site_cnt>0")
                     ->where("site_reg_date>'".$fromdate."'")
                     ->orderBy("site_cnt","desc")
                     ->paginate(5);
