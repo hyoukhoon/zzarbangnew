@@ -25,10 +25,10 @@ class MainController extends Controller
                             ]
                         ]]
                     ]
-                ],
-                'sort' => [
-                    ['site_cnt' => ['order' => 'desc']]
                 ]
+            ],
+            'sort' => [
+                ['site_cnt' => ['order' => 'desc']]
             ]
         ];
         
