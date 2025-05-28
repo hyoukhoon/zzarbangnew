@@ -3,16 +3,14 @@
 namespace App\Models;
 
 use PDPhilip\Elasticsearch\Eloquent\Model;
-use pdphilip\elasticsearch\ElasticquentTrait;
+
 
 class Ozzal extends Model
 {
 
-    use ElasticquentTrait;
-    protected $indexName = 'ozzal';
-
     protected $connection = 'elasticsearch';
     protected $table = 'ozzal';
+    protected $indexName = 'ozzal';
 
     protected $dates = [
         'site_reg_date'
