@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MemberController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\MainController;
+use App\Http\Controllers\CboardController;
 
 /*
 |--------------------------------------------------------------------------
