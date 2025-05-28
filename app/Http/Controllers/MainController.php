@@ -14,11 +14,18 @@ class MainController extends Controller
 
         $params = [
             'query' => [
-              'match' => [
-                'multi' => 'ozzal',
-              ],
+                'match' => [
+                    'multi' => 'ozzal',
+                ],
+                'range' => [
+                    'site_reg_date' => [
+                        'gte' => '2025/05/18 00:00:00',
+                        'lte' => '2025/05/28 23:59:59',
+                        'format' => 'yyyy/MM/dd HH:mm:ss'
+                    ]
+                ],
             ],
-          ];
+        ];
         
         $response = Ozzal::rawSearch($params, $optionsParams = []);
         dd($response);
