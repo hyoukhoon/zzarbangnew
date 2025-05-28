@@ -24,6 +24,6 @@ class CboardController extends Controller
         $boards = Ozzal::where("multi","ozzal")
                     ->orderBy("site_reg_date","desc")
                     ->paginate(50);
-        return view("index",['boards' => $boards]);
+        return view("boards.index",['boards' => $boards]);
     }
 }
