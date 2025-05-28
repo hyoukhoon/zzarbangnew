@@ -23,7 +23,7 @@ class MainController extends Controller
             } }
         , "size": 50, "from": 0, "sort": { "site_reg_date":"desc" } }';
         
-        $response = Ozzal::rawSearch($params, $optionsParams = []);
+        $response = Ozzal::rawDsl($params);
         dd($response);
 
 
