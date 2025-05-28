@@ -12,18 +12,15 @@ class MainController extends Controller
 {
     public function index(){
 
-        $params = '["query": { 
-            "bool": { 
-                "filter": [ { 
-                "terms": { 
-                    "multi": ["ozzal"] 
-                } 
-                } 
-                ]
-            } }
-        , "size": 50, "from": 0, "sort": { "site_reg_date":"desc" } ]';
+        $params = [
+            'query' => [
+              'match' => [
+                'multi' => 'ozzal',
+              ],
+            ],
+          ];
         
-        $response = Ozzal::rawSearch(json_decode($params), $optionsParams = []);
+        $response = Ozzal::rawSearch($params, $optionsParams = []);
         dd($response);
 
 
