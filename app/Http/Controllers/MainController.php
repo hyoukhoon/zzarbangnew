@@ -15,11 +15,11 @@ class MainController extends Controller
         $hot = Ozzal::where("multi","ozzal")
                     //->where("site_reg_date", ">", $fromdate)
                     //->whereDate("site_reg_date", "<", $nowdate)
-                    //->whereBetween('site_reg_date', [$fromdate, $nowdate])
+                    ->whereBetween('site_reg_date', [$fromdate, $nowdate])
                     ->orderBy("site_cnt","desc")
                     ->paginate(5);
         //dd($fromdate, $nowdate);
-        dd($hot->toArray());
+        //dd($hot->toArray());
         return view("index",['boards' => $hot]);
     }
 
