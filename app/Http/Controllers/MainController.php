@@ -10,7 +10,11 @@ use Illuminate\Validation\Rules\Password;
 class MainController extends Controller
 {
     public function index(){
-        return view('index');
+        $rs = Ozzal::where("multi","ozzal")
+                    ->where("site_cnt>0")
+                    ->orderBy("site_cnt","desc")
+                    ->paginate(5);
+        return view("index",['boards' => $boards]);
     }
 
 }
