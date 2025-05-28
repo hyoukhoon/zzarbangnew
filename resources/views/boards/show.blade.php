@@ -81,7 +81,7 @@
                 </div>
 					
                 <div class="card-body">
-                    {{$boards->content}}
+                    {!! nl2br($boards->content) !!}
                 </div>
 
                 <div class="card-body">
