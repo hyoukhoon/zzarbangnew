@@ -29,3 +29,6 @@ Route::get('/elatest', [AdminController::class, 'elatest'])->name('adminarea.ela
 
 //main
 Route::get('/', [MainController::class, 'index'])->name('main.index');
+
+//board
+Route::get('/boards', [CboardController::class, 'index'])->name('boards.index');
