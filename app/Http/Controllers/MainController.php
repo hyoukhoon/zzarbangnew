@@ -10,8 +10,8 @@ use Illuminate\Validation\Rules\Password;
 class MainController extends Controller
 {
     public function index(){
-        $fromdate=date("Y/m/d H:i:s", strtotime('-7 days'));
-        $nowdate=date("Y/m/d H:i:s");
+        $fromdate=now()->subWeek()->toDateString();
+        $nowdate=now()->toDateString();
         $hot = Ozzal::where("multi","ozzal")
                     //->whereDate("site_reg_date", ">", $fromdate)
                     //->whereDate("site_reg_date", "<", $nowdate)
