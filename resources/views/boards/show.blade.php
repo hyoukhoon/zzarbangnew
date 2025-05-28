@@ -56,7 +56,7 @@
     <div class="container">
 		<div style="padding-bottom:10px;padding-top:10px;">
 			<span style="font-weight:700;">{{$boards->subject}}</span>
-			<span style="font-size:14px;float:right;"><i class="bi bi-graph-up" style="font-size:14px;vertical-align: bottom;"></i>&nbsp;</span>
+			<span style="font-size:14px;float:right;"><i class="bi bi-graph-up" style="font-size:14px;vertical-align: bottom;"></i>&nbsp;{{$boards->cnt}}</span>
 		</div>
 		<div class="row">
             <div class="card" style="width:100%;">
@@ -81,7 +81,7 @@
                 </div>
 					
                 <div class="card-body">
-
+                    {{$boards->content}}
                 </div>
 
                 <div class="card-body">
