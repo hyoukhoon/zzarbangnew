@@ -13,7 +13,7 @@ class MainController extends Controller
         $fromdate=date("Y/m/d H:i:s", strtotime('-7 days'));
         $hot = Ozzal::where("multi","ozzal")
                     ->where("site_cnt>0")
-                    ->where("site_reg_date>".$fromdate)
+                    ->where("site_reg_date>'".$fromdate."'")
                     ->orderBy("site_cnt","desc")
                     ->paginate(5);
         return view("index",['boards' => $hot]);
