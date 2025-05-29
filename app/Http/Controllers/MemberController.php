@@ -67,7 +67,7 @@ class MemberController extends Controller
             'email' => $request->userid,
             'passwd' => $passwd,
             'nickName' => $request->username,
-            'loginip' => $_SERVER["REMOTE_ADDR"]
+            'loginip' => $request->ip()
         );
 
         $rs = Member::create($form_data);
