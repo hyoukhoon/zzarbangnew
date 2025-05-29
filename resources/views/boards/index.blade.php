@@ -24,6 +24,7 @@
         <a href="#">All updates</a>
       </small> -->
     </div>
+    {!! $boards->withQueryString()->links() !!}
   <br><br><br>
     
   </main>
