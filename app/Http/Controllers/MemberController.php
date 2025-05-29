@@ -53,7 +53,7 @@ class MemberController extends Controller
         }
 
         $rs1 = Member::where('uid',$request->userid)->count();
-        $rs2 = Member::where('username',$request->username)->count();
+        $rs2 = Member::where('nickName',$request->username)->count();
 
         if ($rs1 or $rs2) {
             return response()->json(array('msg'=> "닉네임이나 이메일이 이미 사용중입니다. 다른 닉네임이나 이메일을 입력해 주세요.", 'result'=>false), 200);
