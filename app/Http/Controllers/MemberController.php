@@ -47,7 +47,7 @@ class MemberController extends Controller
             exit;
         }
 
-        if ($request->agree) {
+        if (!$request->agree) {
             return response()->json(array('msg'=> "약관에 동의하지 않으면 가입할 수 없습니다.", 'result'=>false), 200);
             exit;
         }
