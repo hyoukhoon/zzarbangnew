@@ -46,7 +46,8 @@ class MainController extends Controller
                     ->paginate(20);
         //dd($fromdate, $nowdate);
         //dd($hot->toArray());
-        return view("index",['hots' => $hots, 'today' => $today]);
+        //return view("index",['hots' => $hots, 'today' => $today]);
+        return view("index",compact('hots','today'));
     }
 
 }
