@@ -34,6 +34,8 @@ Route::get('/', [MainController::class, 'index'])->name('main.index');
 //member
 Route::get('/member/signup', [MemberController::class, 'signup'])->name('member.signup');
 Route::POST('/member/signupok', [MemberController::class, 'signupok'])->name('member.signupok');
+Route::get('/member/login', [MemberController::class, 'login'])->name('member.login');
+Route::POST('/member/loginok', [MemberController::class, 'loginok'])->name('member.loginok');
 
 //board
 Route::get('/boards', [CboardController::class, 'index'])->name('boards.index');
