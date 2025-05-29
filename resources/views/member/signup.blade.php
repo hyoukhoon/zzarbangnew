@@ -403,6 +403,7 @@ $kakaoUrl = "https://kauth.kakao.com/oauth/authorize?response_type=code&client_i
         var userid=$("#userid").val();
         var password=$("#password").val();
         var password_confirmation=$("#password_confirmation").val();
+        var agree=$("input:checkbox[name='agree']:checked").val()
 
         if(!username || !userid || !password || !password_confirmation){
           alert('필수값을 입력해주세요.');
@@ -423,7 +424,8 @@ $kakaoUrl = "https://kauth.kakao.com/oauth/authorize?response_type=code&client_i
             username : username,
             userid : userid,
             password : password,
-            password_confirmation : password_confirmation
+            password_confirmation : password_confirmation,
+            agree : agree
         };
         $.ajax({
             headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
