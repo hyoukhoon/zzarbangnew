@@ -63,7 +63,7 @@ class MemberController extends Controller
         $passwd = $request->password;
         $passwd = hash('sha512',$passwd);
         $form_data = array(
-            'userid' => $request->userid,
+            'uid' => $request->userid,
             'email' => $request->userid,
             'passwd' => $passwd,
             'nickName' => $request->username,
