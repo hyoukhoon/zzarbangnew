@@ -28,11 +28,11 @@ $kakaoUrl = "https://kauth.kakao.com/oauth/authorize?response_type=code&client_i
         </div>
         <div class="col-12">
             <label for="validationCustom02" class="form-label">비밀번호(8자이상, 영문자, 숫자, 특수문자 포함)</label>
-            <input type="password" class="form-control" id="passwd" name="passwd" placeholder="" required>
+            <input type="password" class="form-control" id="password" name="password" placeholder="" required>
         </div>
         <div class="col-12">
             <label for="validationCustom02" class="form-label">비밀번호확인</label>
-            <input type="password" class="form-control" id="repasswd" name="repasswd" placeholder="" required>
+            <input type="password" class="form-control" id="password_confirmation" name="password_confirmation" placeholder="" required>
         </div>
         <div class="form-check">
         <input class="form-check-input" type="checkbox" name="agree" value="1" id="agree" checked>
@@ -400,20 +400,20 @@ $kakaoUrl = "https://kauth.kakao.com/oauth/authorize?response_type=code&client_i
    </main>
    <script>
       function sendform(){
-          var passwd=$("#passwd").val();
-          var repasswd=$("#repasswd").val();
+          var password=$("#password").val();
+          var password_confirmation=$("#password_confirmation").val();
   
           if($("#agree").is(":checked")==false){
               alert('약관에 동의하지 않으면 가입할 수 없습니다.');
               return false;
           }
   
-          if(passwd!=repasswd){
+          if(password!=password_confirmation){
               alert('비밀번호와 비밀번호확인의 값이 다릅니다.');
               return false;
           }
   
-          if(!CheckPass(passwd)){
+          if(!CheckPass(password)){
               alert('비밀번호 생성규칙에 위반됩니다.');
               return false;
           }
