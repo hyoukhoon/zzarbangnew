@@ -34,7 +34,7 @@ class MemberController extends Controller
 
         $validator = Validator::make($request->all(), [
             'username' => 'required',
-            'email' => 'required',
+            'userid' => 'required',
             'password' => ['required', 'confirmed', Password::min(8)
                                                             ->letters()
                                                             ->numbers()
@@ -46,7 +46,12 @@ class MemberController extends Controller
             exit;
         }
 
-        $rs1 = Member::where('email',$request->email)->count();
+        if ($request->agree) {
+            return response()->json(array('msg'=> "약관에 동의하지 않으면 가입할 수 없습니다.", 'result'=>false), 200);
+            exit;
+        }
+
+        $rs1 = Member::where('userid',$request->userid)->count();
         $rs2 = Member::where('username',$request->username)->count();
 
         if ($rs1 or $rs2) {
@@ -56,12 +61,12 @@ class MemberController extends Controller
 
         $passwd = $request->password;
         $passwd = hash('sha512',$passwd);
-        $uid = explode("@",$request->email);
         $form_data = array(
-            'userid' => $uid[0],
-            'email' => $request->email,
+            'userid' => $request->userid,
+            'email' => $request->userid,
             'passwd' => $passwd,
-            'username' => $request->username
+            'nickName' => $request->username,
+            'loginip' => $_SERVER["REMOTE_ADDR"]
         );
 
         $rs = Member::create($form_data);
