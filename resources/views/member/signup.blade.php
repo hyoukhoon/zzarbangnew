@@ -15,9 +15,7 @@ $kakaoUrl = "https://kauth.kakao.com/oauth/authorize?response_type=code&client_i
 <main class="container">
 
     <div class="my-3 p-3 bg-body rounded shadow-sm">
-  
-        <form class="row g-3 needs-validation" id="signup" method="post" action="/member/signupok" onsubmit="return sendform();">
-        @csrf
+
         <div class="col-12">
             <label for="validationCustom01" class="form-label">이름</label>
             <input type="text" class="form-control" id="username" name="username" placeholder="" required>
@@ -44,9 +42,9 @@ $kakaoUrl = "https://kauth.kakao.com/oauth/authorize?response_type=code&client_i
             <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
             약관확인하기
             </button>
-            <button class="btn btn-dark" type="submit">가입하기</button>
+            <button class="btn btn-dark" type="button" id="signup">가입하기</button>
         </div>
-        </form>
+
     <br>
         <div style="padding:20px;text-align:center;">
         <!-- <div class="sns-login-box">
@@ -399,35 +397,62 @@ $kakaoUrl = "https://kauth.kakao.com/oauth/authorize?response_type=code&client_i
   
    </main>
    <script>
-      function sendform(){
-          var password=$("#password").val();
-          var password_confirmation=$("#password_confirmation").val();
+      $("#signup").click(function () {
+
+		var username=$("#username").val();
+        var userid=$("#userid").val();
+        var password=$("#password").val();
+        var password_confirmation=$("#password_confirmation").val();
+
+        if(!username || !userid || !password || !password_confirmation){
+          alert('필수값을 입력해주세요.');
+          return false;
+        }
+
+        if(password!=password_confirmation){
+          alert('비밀번호를 다시 확인해 주십시오.');
+          return false;
+        }
+
+        if(!CheckPass(password)){
+            alert('비밀번호 생성규칙에 위반됩니다.');
+            return false;
+        }
+        
+        var data = {
+            username : username,
+            userid : userid,
+            password : password,
+            password_confirmation : password_confirmation
+        };
+        $.ajax({
+            headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+            type: 'post',
+            url: '{{ route('member.signupok') }}',
+            dataType: 'json',
+            data: data,
+            success: function(data) {
+                if(data.result==true){
+                    alert(data.msg);
+                    location.href='/';
+                }else{
+                    alert(data.msg);
+                    return false;
+                }
+            },
+            error: function(data) {
+                console.log("error" +JSON.stringify(data));
+            }
+        });
+    });
   
-          if($("#agree").is(":checked")==false){
-              alert('약관에 동의하지 않으면 가입할 수 없습니다.');
-              return false;
-          }
-  
-          if(password!=password_confirmation){
-              alert('비밀번호와 비밀번호확인의 값이 다릅니다.');
-              return false;
-          }
-  
-          if(!CheckPass(password)){
-              alert('비밀번호 생성규칙에 위반됩니다.');
-              return false;
-          }
-  
-          return true;
-      }
-  
-  function CheckPass(str){
-          var reg1 = /^[a-z0-9!~@#$%^&*()?+=\/]{8,100}$/; 
-          var reg2 = /[a-z]/g;    
-          var reg3 = /[0-9]/g;
-          var reg4 = /[!~@#$%^&*()?+=\/]/g;
-          return(reg1.test(str) &&  reg2.test(str) && reg3.test(str) && reg4.test(str));
-      };
+    function CheckPass(str){
+        var reg1 = /^[a-z0-9!~@#$%^&*()?+=\/]{8,100}$/; 
+        var reg2 = /[a-z]/g;    
+        var reg3 = /[0-9]/g;
+        var reg4 = /[!~@#$%^&*()?+=\/]/g;
+        return(reg1.test(str) &&  reg2.test(str) && reg3.test(str) && reg4.test(str));
+    };
   
    </script>
 

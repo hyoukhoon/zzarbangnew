@@ -52,7 +52,7 @@ class MemberController extends Controller
             exit;
         }
 
-        $rs1 = Member::where('userid',$request->userid)->count();
+        $rs1 = Member::where('uid',$request->userid)->count();
         $rs2 = Member::where('username',$request->username)->count();
 
         if ($rs1 or $rs2) {
