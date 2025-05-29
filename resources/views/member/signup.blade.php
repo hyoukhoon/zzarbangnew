@@ -1,6 +1,17 @@
 @extends('main.layout')
 @section('content')
+<?php
 
+$client_id = "gWeNFii9g_E70clnmtNO";
+$redirectURI = urlencode("https://www.zzarbang.com/member/authnaver.php");
+$state = "RAMDOM_STATE";
+$apiURL = "https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=".$client_id."&redirect_uri=".$redirectURI."&state=".$state;
+
+$restapikey = "1a1fda6b277c8982381d658aba68b30e"; //rest api key 입력
+$callbackUrl = "https://www.zzarbang.com/member/authkakao.php"; //call back URL 입력
+$kakaoUrl = "https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=".$restapikey."&redirect_uri=".$callbackUrl;
+
+?>
 <main class="container">
 
     <div class="my-3 p-3 bg-body rounded shadow-sm">
