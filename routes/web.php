@@ -36,6 +36,7 @@ Route::get('/member/signup', [MemberController::class, 'signup'])->name('member.
 Route::POST('/member/signupok', [MemberController::class, 'signupok'])->name('member.signupok');
 Route::get('/member/login', [MemberController::class, 'login'])->name('member.login');
 Route::POST('/member/loginok', [MemberController::class, 'loginok'])->name('member.loginok');
+Route::get('/member/logout', [MemberController::class, 'logout'])->name('member.logout');
 
 //board
 Route::get('/boards', [CboardController::class, 'index'])->name('boards.index');

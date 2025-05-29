@@ -134,13 +134,22 @@
 		<li class="nav-item">
 			  <a class="nav-link" href="/convert/convert.php"><span class="material-symbols-outlined" style="vertical-align: text-bottom;">change_circle</span>파일변환</a>
 			</li>
-
+      @guest()
 			<li class="nav-item">
 			  <a class="nav-link" href="/member/login"><span class="material-symbols-outlined" style="vertical-align: text-bottom;">login</span>로그인</a>
 			</li>
 			<li class="nav-item">
 			  <a class="nav-link" href="/member/signup"><span class="material-symbols-outlined" style="vertical-align: text-bottom;">person_add</span>회원가입</a>
 			</li>
+      @endguest
+      @auth()
+      <li class="nav-item">
+			  <a class="nav-link" href="/member/mypage"><span class="material-symbols-outlined" style="vertical-align: text-bottom;">login</span>마이페이지</a>
+			</li>
+			<li class="nav-item">
+			  <a class="nav-link" href="/member/logout"><span class="material-symbols-outlined" style="vertical-align: text-bottom;">person_add</span>로그아웃</a>
+			</li>
+      @endauth
 			<li class="nav-item">
 			  <a class="nav-link" href="/board/qna.php"><span class="material-symbols-outlined" style="vertical-align: text-bottom;">support_agent</span>문의하기</a>
 			</li>
