@@ -35,7 +35,7 @@ class MemberController extends Controller
         $validator = Validator::make($request->all(), [
             'username' => 'required',
             'userid' => 'required',
-            'password' => ['required', 'confirmed', Password::min(8)
+            'passwd' => ['required', 'confirmed', Password::min(8)
                                                             ->letters()
                                                             ->numbers()
                                                             ->symbols()]
@@ -43,7 +43,7 @@ class MemberController extends Controller
         
         if ($validator->fails()) {
             $errors = $validator->errors();
-            return response()->json(array('msg'=> $errors, 'result'=>false), 200);
+            return response()->json(array('msg'=> "필수값이 빠졌거나 비밀번호 규칙을 위반했습니다.", 'result'=>false), 200);
             exit;
         }
 
@@ -60,7 +60,7 @@ class MemberController extends Controller
             exit;
         }
 
-        $passwd = $request->password;
+        $passwd = $request->passwd;
         $passwd = hash('sha512',$passwd);
         $form_data = array(
             'userid' => $request->userid,
