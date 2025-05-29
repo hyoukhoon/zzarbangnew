@@ -100,7 +100,7 @@
     
     <!-- Custom styles for this template -->
     <link href="/assets/offcanvas-navbar.css" rel="stylesheet">
-
+    <meta name="csrf-token" content="{{ csrf_token() }}">
   </head>
   <body class="bg-light">
     

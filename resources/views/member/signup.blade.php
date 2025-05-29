@@ -17,6 +17,7 @@ $kakaoUrl = "https://kauth.kakao.com/oauth/authorize?response_type=code&client_i
     <div class="my-3 p-3 bg-body rounded shadow-sm">
   
         <form class="row g-3 needs-validation" id="signup" method="post" action="/member/signupok" onsubmit="return sendform();">
+        @csrf
         <div class="col-12">
             <label for="validationCustom01" class="form-label">이름</label>
             <input type="text" class="form-control" id="username" name="username" placeholder="" required>
