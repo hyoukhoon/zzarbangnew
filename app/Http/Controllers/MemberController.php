@@ -179,15 +179,15 @@ class MemberController extends Controller
 
         $ismember = Member::where($loginInfo)->first();
         if($ismember){
-            $istatus = Member::where($loginInfo)->where('status',1)->first();
+            $istatus = Member::where($loginInfo)->where('ismember',1)->first();
             if($istatus){
                 Auth::login($ismember, $remember);
                 return redirect("/");
             }else{
-                return redirect() -> route('auth.login')->with('loginFail', '로그인 할 수 없는 계정입니다. 관리자에게 문의 하십시오.');
+                return redirect() -> route('member.login')->with('loginFail', '로그인 할 수 없는 계정입니다. 관리자에게 문의 하십시오.');
             }
         }else{
-            return redirect() -> route('auth.login')->with('loginFail', '아이디나 비밀번호가 틀렸습니다.');
+            return redirect() -> route('member.login')->with('loginFail', '아이디나 비밀번호가 틀렸습니다.');
         }
     }
 
