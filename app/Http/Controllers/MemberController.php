@@ -164,16 +164,16 @@ class MemberController extends Controller
     public function loginok(Request $request){
 
         $validated = $request->validate([
-            'email' => 'required',
+            'userid' => 'required',
             'passwd' => 'required',
         ]);
         
-        $email = $request->email;
+        $userid = $request->userid;
         $passwd = $request->passwd;
         $passwd = hash('sha512',$passwd);
         $remember = $request->remember;
         $loginInfo = array(
-            'email' => $email,
+            'uid' => $userid,
             'passwd' => $passwd
         );
 

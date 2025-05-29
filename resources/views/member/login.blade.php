@@ -30,7 +30,7 @@ $kakaoUrl = "https://kauth.kakao.com/oauth/authorize?response_type=code&client_i
           <label for="floatingPassword">Password</label>
         </div>
         <div class="form-floating">
-          <input type="checkbox" id="savelogin" name="savelogin" value="1">&nbsp;로그인기억(사이트를 이용하지 않을시 반드시 로그아웃 하십시오.)
+          <input type="checkbox" id="remember" name="remember" value="1">&nbsp;로그인기억(사이트를 이용하지 않을시 반드시 로그아웃 하십시오.)
         </div>
     
     
@@ -66,13 +66,13 @@ $kakaoUrl = "https://kauth.kakao.com/oauth/authorize?response_type=code&client_i
     </div>
     <div style="padding:20px;">
     
-        <a href="/member/signup.php"><button class="w-100 btn btn-lg btn-dark" type="button">회원가입</button></a>
+        <a href="/member/signup"><button class="w-100 btn btn-lg btn-dark" type="button">회원가입</button></a>
     
     </div>
     
     <div style="padding:20px;">
     
-        <a href="/member/idfinder.php"><button class="w-100 btn btn-lg btn-dark" type="button">아이디/비밀번호 찾기</button></a>
+        <a href="/member/idfinder"><button class="w-100 btn btn-lg btn-dark" type="button">아이디/비밀번호 찾기</button></a>
     
     </div>
     
