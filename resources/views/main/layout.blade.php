@@ -136,10 +136,10 @@
 			</li>
 
 			<li class="nav-item">
-			  <a class="nav-link" href="/member/login.php"><span class="material-symbols-outlined" style="vertical-align: text-bottom;">login</span>로그인</a>
+			  <a class="nav-link" href="/member/login"><span class="material-symbols-outlined" style="vertical-align: text-bottom;">login</span>로그인</a>
 			</li>
 			<li class="nav-item">
-			  <a class="nav-link" href="/member/signup.php"><span class="material-symbols-outlined" style="vertical-align: text-bottom;">person_add</span>회원가입</a>
+			  <a class="nav-link" href="/member/signup"><span class="material-symbols-outlined" style="vertical-align: text-bottom;">person_add</span>회원가입</a>
 			</li>
 			<li class="nav-item">
 			  <a class="nav-link" href="/board/qna.php"><span class="material-symbols-outlined" style="vertical-align: text-bottom;">support_agent</span>문의하기</a>

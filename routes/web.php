@@ -31,6 +31,10 @@ Route::get('/elatest', [AdminController::class, 'elatest'])->name('adminarea.ela
 //main
 Route::get('/', [MainController::class, 'index'])->name('main.index');
 
+//member
+Route::get('/member/signup', [MemberController::class, 'signup'])->name('member.signup');
+Route::get('/member/signupok', [MemberController::class, 'signupok'])->name('member.signup');
+
 //board
 Route::get('/boards', [CboardController::class, 'index'])->name('boards.index');
 Route::get('/boards/{id}', [CboardController::class, 'show'])->name('boards.show');
