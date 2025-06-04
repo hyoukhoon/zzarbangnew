@@ -20,11 +20,11 @@ use Illuminate\Validation\Rules\Password;
 class CboardController extends Controller
 {
     public function index(){
-        
-        $boards = Ozzal::where("multi","ozzal")
+        $multi = "ozzal";
+        $boards = Ozzal::where("multi",$multi)
                     ->orderBy("site_reg_date","desc")
                     ->paginate(50);
-        return view("boards.index",['boards' => $boards]);
+        return view("boards.index",['boards' => $boards, 'multi' => $multi]);
     }
 
     public function show($bid){

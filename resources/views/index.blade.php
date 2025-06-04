@@ -1,6 +1,5 @@
 @extends('main.layout')
 @section('content')
-
 <style>
 	.page-link a{color: black;}
 </style>
@@ -112,7 +111,7 @@
 	</div>
 @auth()  
 <div style="text-align:left;margin:20px;">
-<a href="/board/write.php" class="btn btn-dark">등록</a>
+<a href="/boards/write/{{ $multi }}" class="btn btn-dark">등록</a>
 </div>
 @endauth()		
   </div>
