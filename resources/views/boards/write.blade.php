@@ -23,7 +23,7 @@
     <form action="#" method="post">
     @csrf
     @method('post')
-    <input type="hidden" name="pid" id="pid" value="{{ $pid??0 }}">
+    <input type="hidden" name="pid" id="pid" value="{{ $pid }}">
     <input type="hidden" name="bid" id="bid" value="{{ $bid??0 }}">
     <input type="hidden" name="code" id="code" value="boardattach">
     <input type="hidden" name="attcnt" id="attcnt" value="0">
