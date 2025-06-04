@@ -7,7 +7,7 @@
       <h6 class="border-bottom pb-2 mb-0"><span class="material-symbols-outlined" style="vertical-align: text-bottom;">workspace_premium</span>게시판</h6>
   
     @foreach ($boards as $key => $b)
-        <a href="/boards/{{$b->site_num}}">
+        <a href="/boards/show/{{$b->site_num}}">
         <div class="d-flex text-muted pt-3">
           @if($b->thumbnail)
             @if($b->thumbnail=="mp4")

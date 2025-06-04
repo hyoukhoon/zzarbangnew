@@ -28,7 +28,7 @@ class CboardController extends Controller
         return view("boards.index",['boards' => $boards, 'multi' => $multi]);
     }
 
-    public function show($bid){
+    public function show($bid,$page){
         
         $boards = Cboard::findOrFail($bid);
         $boards->content = htmlspecialchars_decode($boards->content);
@@ -80,7 +80,7 @@ class CboardController extends Controller
             if($request->pid){
                 //Filetables::where('pid', $request->pid)->where('userid', Auth::user()->email)->update(array('pid' => $rs->bid));
             }
-            return response()->json(array('msg'=> "succ", 'bid'=>$rs->bid), 200);
+            return response()->json(array('msg'=> "succ", 'bid'=>$rs->num), 200);
         }
     }
 }

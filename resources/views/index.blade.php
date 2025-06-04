@@ -12,7 +12,7 @@
     <h6 class="border-bottom pb-2 mb-0"><span class="material-symbols-outlined" style="vertical-align: text-bottom;">award_star</span> Today Hot!</h6>
 
     @foreach ($hots as $hot)
-        <a class="page_link" href="/view/{{$hot['site_num']}}">
+        <a class="page_link" href="/boards/show/{{$hot['site_num']}}">
         <div class="d-flex text-muted pt-3">
           @if($hot['thumbnail'])
             @if($hot['thumbnail']=="mp4")
@@ -54,7 +54,7 @@
     <h6 class="border-bottom pb-2 mb-0"><span class="material-symbols-outlined" style="vertical-align: text-bottom;">book</span> Today Zzal </h6>
 
     @foreach ($today as $key => $t)
-    <a class="page_link" href="/view/{{$t->site_num}}">
+    <a class="page_link" href="/boards/show/{{$t->site_num}}">
     <div class="d-flex text-muted pt-3">
       @if($t->thumbnail)
         @if($t->thumbnail=="mp4")
