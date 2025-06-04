@@ -70,6 +70,8 @@ function boardtitle($multi){
         break;
         case "music":$name="음악게시판";
         break;
+        case "ozzal":$name="짜르방게시판";
+        break;
 
     }
 
