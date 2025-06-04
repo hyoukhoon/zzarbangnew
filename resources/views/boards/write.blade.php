@@ -57,7 +57,7 @@
 <br><br>	<br><br>
 <!-- /.container -->
 <script>
-    function sendsubmit(){
+    function saveUp(){
         var subject=$("#subject").val();
         //var content=$("#content").val();
         var content=$('#summerframe').get(0).contentWindow.$('#summernote').summernote('code');//iframe에 있는 값을 가져온다
