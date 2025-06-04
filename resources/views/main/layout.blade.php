@@ -25,7 +25,7 @@
 	<meta name="msapplication-TileColor" content="#ffffff">
 	<meta name="msapplication-TileImage" content="/img/favi/ms-icon-144x144.png">
 	<meta name="theme-color" content="#ffffff">
-    <title>ZZr르방 - 뻘글저장소</title>
+    <title>테스트용 사이트</title>
 
 <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/offcanvas-navbar/">
  <link href="/assets/dist/css/bootstrap.min.css" rel="stylesheet">
