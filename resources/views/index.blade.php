@@ -110,10 +110,11 @@
 	  Searching...
 	</button>
 	</div>
+@auth()  
 <div style="text-align:left;margin:20px;">
 <a href="/board/write.php" class="btn btn-dark">등록</a>
 </div>
-		
+@endauth()		
   </div>
 </main>
 
