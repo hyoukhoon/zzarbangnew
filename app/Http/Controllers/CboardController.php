@@ -68,16 +68,16 @@ class CboardController extends Controller
         $form_data = array(
             'subject' => $request->subject,
             'content' => $request->content,
-            'userid' => Auth::user()->email,
-            'username' => Auth::user()->username,
+            'uid' => Auth::user()->email,
+            'name' => Auth::user()->username,
             'email' => Auth::user()->email,
-            'multi' => $request->multi??'free',
-            'status' => 1
+            'multi' => $request->multi??'ozzal',
+            'isdisp' => 1
         );
 
         if(auth()->check()){
             $rs=Cboard::create($form_data);
-            Filetables::where('pid', $request->pid)->where('userid', Auth::user()->email)->wherein('code',['boardattach','editorattach'])->update(array('pid' => $rs->bid));
+            Filetables::where('pid', $request->pid)->where('userid', Auth::user()->email)->update(array('pid' => $rs->bid));
             return response()->json(array('msg'=> "succ", 'bid'=>$rs->bid), 200);
         }
     }
