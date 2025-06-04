@@ -12,7 +12,7 @@ use App\Models\Qna;
 use App\Models\Police;
 use App\Models\Chukppa;
 use App\Models\Ozzal;
-use App\Models\FileTables;
+use App\Models\Filetables;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
@@ -53,7 +53,7 @@ class CboardController extends Controller
             $bid = $bid??0;
             if($bid){
                 $boards = Cboard::findOrFail($bid);
-                $attaches = FileTables::where('pid',$bid)->where('status',1)->where('code','boardattach')->get();
+                $attaches = Filetables::where('pid',$bid)->where('status',1)->where('code','boardattach')->get();
                 return view('boards.write', ['multi' => $multi, 'bid' => $bid, 'boards' => $boards, 'attaches' => $attaches]);
             }else{
                 return view('boards.write', ['multi' => $multi, 'bid' => $bid, 'boards' => $boards, 'attaches' => $attaches]);
@@ -76,8 +76,8 @@ class CboardController extends Controller
         );
 
         if(auth()->check()){
-            $rs=Board::create($form_data);
-            FileTables::where('pid', $request->pid)->where('userid', Auth::user()->email)->wherein('code',['boardattach','editorattach'])->update(array('pid' => $rs->bid));
+            $rs=Cboard::create($form_data);
+            Filetables::where('pid', $request->pid)->where('userid', Auth::user()->email)->wherein('code',['boardattach','editorattach'])->update(array('pid' => $rs->bid));
             return response()->json(array('msg'=> "succ", 'bid'=>$rs->bid), 200);
         }
     }
