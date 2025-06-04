@@ -62,4 +62,23 @@ class CboardController extends Controller
             return redirect()->back()->withErrors('로그인 하십시오.');
         }
     }
+
+    public function create(Request $request)
+    {
+        $form_data = array(
+            'subject' => $request->subject,
+            'content' => $request->content,
+            'userid' => Auth::user()->email,
+            'username' => Auth::user()->username,
+            'email' => Auth::user()->email,
+            'multi' => $request->multi??'free',
+            'status' => 1
+        );
+
+        if(auth()->check()){
+            $rs=Board::create($form_data);
+            FileTables::where('pid', $request->pid)->where('userid', Auth::user()->email)->wherein('code',['boardattach','editorattach'])->update(array('pid' => $rs->bid));
+            return response()->json(array('msg'=> "succ", 'bid'=>$rs->bid), 200);
+        }
+    }
 }
