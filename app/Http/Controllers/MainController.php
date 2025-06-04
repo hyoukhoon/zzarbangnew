@@ -40,14 +40,14 @@ class MainController extends Controller
         // print_r($response);
         //exit;
 
-        
-        $today = Ozzal::where("multi","ozzal")
+        $multi = "ozzal";
+        $today = Ozzal::where("multi",$multi)
                     ->orderBy("site_reg_date","desc")
                     ->paginate(20);
         //dd($fromdate, $nowdate);
         //dd($hot->toArray());
-        //return view("index",['hots' => $hots, 'today' => $today]);
-        return view("index",compact('hots','today'));
+        return view("index",['hots' => $hots, 'today' => $today,'multi' => $multi]);
+        //return view("index",compact('hots','today'));
     }
 
 }
