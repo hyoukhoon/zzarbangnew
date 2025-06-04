@@ -1,5 +1,22 @@
 @extends('main.layout')
 @section('content')
+<?php
+        if($bid){
+            $pid=$bid;
+            $btitle = "수정";
+        }else{
+            $pid=time();
+            $btitle = "쓰기";
+        }
+    ?>
+<!-- Section Title -->
+<div class="container section-title" style="margin-bottom:0px;margin-top:10px;" data-aos="fade-up">
+    <div class="section-title-container d-flex align-items-center justify-content-between" style="padding-bottom:0px;">
+        <h2>{{ boardtitle($multi)}}</h2>
+        <p>{{ boardtitle($multi)}}입니다.</p>
+    </div>
+</div>
+<!-- End Section Title -->
 
 <!-- Page Content -->
 <div class="container">
