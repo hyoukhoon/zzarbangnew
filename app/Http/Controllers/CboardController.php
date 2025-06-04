@@ -69,7 +69,7 @@ class CboardController extends Controller
             'subject' => $request->subject,
             'content' => $request->content,
             'uid' => Auth::user()->email,
-            'name' => Auth::user()->username,
+            'name' => Auth::user()->nickName,
             'email' => Auth::user()->email,
             'multi' => $request->multi??'ozzal',
             'isdisp' => 1
