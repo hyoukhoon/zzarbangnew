@@ -12,6 +12,7 @@ use App\Models\Qna;
 use App\Models\Police;
 use App\Models\Chukppa;
 use App\Models\Ozzal;
+use App\Models\FileTables;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
@@ -32,5 +33,33 @@ class CboardController extends Controller
         $boards = Cboard::findOrFail($bid);
         $boards->content = htmlspecialchars_decode($boards->content);
         return view("boards.show",['boards' => $boards]);
+    }
+
+    public function summernote($multi, $bid = null)
+    {
+        if($bid){
+            $boards = Cboard::findOrFail($bid);
+        }else{
+            $boards = array();
+        }
+        return view('boards.summernote', ['multi' => $multi, 'boards' => $boards]);
+    }
+
+    public function write($multi,$bid=null)
+    {
+        if(auth()->check()){
+            $boards = array();
+            $attaches = array();
+            $bid = $bid??0;
+            if($bid){
+                $boards = Cboard::findOrFail($bid);
+                $attaches = FileTables::where('pid',$bid)->where('status',1)->where('code','boardattach')->get();
+                return view('boards.write', ['multi' => $multi, 'bid' => $bid, 'boards' => $boards, 'attaches' => $attaches]);
+            }else{
+                return view('boards.write', ['multi' => $multi, 'bid' => $bid, 'boards' => $boards, 'attaches' => $attaches]);
+            }
+        }else{
+            return redirect()->back()->withErrors('로그인 하십시오.');
+        }
     }
 }
