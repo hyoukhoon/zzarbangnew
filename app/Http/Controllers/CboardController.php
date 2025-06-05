@@ -32,6 +32,7 @@ class CboardController extends Controller
         Cboard::find($bid)->increment('cnt');
         $boards = Cboard::findOrFail($bid);
         $boards->content = htmlspecialchars_decode($boards->content);
+        $memos = array();
         if($boards->memo_cnt){//메모
             DB::enableQueryLog();
                 $memos = DB::table('memos')
@@ -42,7 +43,7 @@ class CboardController extends Controller
                 ->get();
             print_r(DB::getQueryLog());
         }
-        return view("boards.show",['boards' => $boards]);
+        return view("boards.show",['boards' => $boards, 'memos' => $memos]);
     }
 
     public function summernote($multi, $bid = null)
