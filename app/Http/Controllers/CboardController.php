@@ -77,21 +77,19 @@ class CboardController extends Controller
 
         if(auth()->check()){
             $rs = Cboard::create($form_data);
-            print_r($rs);
-            exit;
             if($rs){//디비에 입력하면 엘라스틱에도
                 $multi = $request->multi??'ozzal';
                 $thumbnail="img";
-                $url = "/boards/show/".$rs."/1";
+                $url = "/boards/show/".$rs->num."/1";
                 $dates = date("Y/m/d H:i:s");
-                $esuid = "ozzal_free_".$rs;
+                $esuid = "ozzal_free_".$rs->num;
                 $es = Ozzal::create([
                     'username' => Auth::user()->nickName,
                     'multi' => $multi,
                     'thumbnail' => $thumbnail,
                     'subject' => $request->subject,
                     'url' => $url,
-                    'site_num' => $rs,
+                    'site_num' => $rs->num,
                     'userid' => Auth::user()->email,
                     'site_reg_date' => $dates,
                     'site_cnt' => 1,
@@ -99,7 +97,7 @@ class CboardController extends Controller
                 ]);
             }
 
-            Filetables::where('pid', $request->pid)->where('userid', Auth::user()->email)->update(array('pid' => $rs->bid));
+            Filetables::where('pid', $request->pid)->where('userid', Auth::user()->email)->update(array('pid' => $rs->num));
 
             return response()->json(array('msg'=> "succ", 'bid'=>$rs->num), 200);
         }
