@@ -34,14 +34,14 @@ class CboardController extends Controller
         $boards->content = htmlspecialchars_decode($boards->content);
         $memos = array();
         if($boards->memo_cnt){//메모
-            DB::enableQueryLog();
+            //DB::enableQueryLog();
                 $memos = DB::table('memos')
                 ->select('memos.*')
                 ->where('memos.bid', $bid)->where('memos.status',1)
                 ->orderByRaw('IFNULL(memos.pid,memos.id), memos.pid ASC')
                 ->orderBy('memos.id', 'asc')
                 ->get();
-            print_r(DB::getQueryLog());
+            //print_r(DB::getQueryLog());
         }
         return view("boards.show",['boards' => $boards, 'memos' => $memos]);
     }
