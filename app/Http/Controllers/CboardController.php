@@ -29,9 +29,19 @@ class CboardController extends Controller
     }
 
     public function show($bid,$page){
-        
+        Cboard::find($bid)->increment('cnt');
         $boards = Cboard::findOrFail($bid);
         $boards->content = htmlspecialchars_decode($boards->content);
+        if($boards->memo_cnt){//메모
+            DB::enableQueryLog();
+                $memos = DB::table('memos')
+                ->select('memos.*')
+                ->where('memos.bid', $bid)->where('memos.status',1)
+                ->orderByRaw('IFNULL(memos.pid,memos.id), memos.pid ASC')
+                ->orderBy('memos.id', 'asc')
+                ->get();
+            print_r(DB::getQueryLog());
+        }
         return view("boards.show",['boards' => $boards]);
     }
 
