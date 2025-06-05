@@ -76,10 +76,13 @@ class CboardController extends Controller
         );
 
         if(auth()->check()){
-            $rs=Cboard::create($form_data);
-            if($request->pid){
-                Filetables::where('pid', $request->pid)->where('userid', Auth::user()->email)->update(array('pid' => $rs->bid));
+            $rs = Cboard::create($form_data);
+            if($rs){//디비에 입력하면 엘라스틱에도
+                $es = Ozzal::create($form_data);
             }
+
+            Filetables::where('pid', $request->pid)->where('userid', Auth::user()->email)->update(array('pid' => $rs->bid));
+
             return response()->json(array('msg'=> "succ", 'bid'=>$rs->num), 200);
         }
     }
