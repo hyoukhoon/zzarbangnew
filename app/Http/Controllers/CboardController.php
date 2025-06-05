@@ -34,7 +34,7 @@ class CboardController extends Controller
         
         DB::enableQueryLog();
         $boards = DB::table('cboard as c1')
-                    ->select('c1.*','(select num from cboard c2 where c2.num<c1.num order by num desc limit 1) as prevnum')
+                    ->select('c1.*','select num from cboard c2 where c2.num<c1.num order by num desc limit 1 as prevnum')
                     ->where('num',$bid)->get();
         print_r(DB::getQueryLog());
 
