@@ -78,7 +78,22 @@ class CboardController extends Controller
         if(auth()->check()){
             $rs = Cboard::create($form_data);
             if($rs){//디비에 입력하면 엘라스틱에도
-                $es = Ozzal::create($form_data);
+                $thumbnail="img";
+                $url = "/boards/show/".$rs."/1";
+                $dates = date("Y/m/d H:i:s");
+                $esuid = "ozzal_free_".$rs;
+                $es = Ozzal::create([
+                    'username' => Auth::user()->nickName,
+                    'multi' => $multi,
+                    'thumbnail' => $thumbnail,
+                    'subject' => $request->subject,
+                    'url' => $url,
+                    'site_num' => $rs,
+                    'userid' => Auth::user()->email,
+                    'site_reg_date' => $dates,
+                    'site_cnt' => 1,
+                    'uid' => $esuid
+                ]);
             }
 
             Filetables::where('pid', $request->pid)->where('userid', Auth::user()->email)->update(array('pid' => $rs->bid));
