@@ -34,8 +34,10 @@ class CboardController extends Controller
         
         DB::enableQueryLog();
         $boards = DB::table('cboard as c1')
-                    ->select('c1.*','(select num from cboard as c2 where c2.num<c1.num order by num desc limit 1) as pn')
-                    ->where('num',$bid)->get();
+                    ->select('c1.*'
+                    ,DB::raw("(select concat(num, '||', subject) from cboard c2 where c2.num < c1.num order by num desc limit 1) as prevnum")
+                    ,DB::raw("(select concat(num, '||', subject) from cboard c2 where c2.num > c1.num order by num asc limit 1) as nextnum"))
+                    ->where('c1.num',$bid)->first();
         print_r(DB::getQueryLog());
 
         $boards->content = htmlspecialchars_decode($boards->content);
