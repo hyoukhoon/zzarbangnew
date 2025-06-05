@@ -97,7 +97,7 @@ class CboardController extends Controller
                 ]);
             }
 
-            Filetables::where('pid', $request->pid)->where('userid', Auth::user()->email)->update(array('pid' => $rs->num));
+            Filetables::where('bid', $request->pid)->where('userid', Auth::user()->email)->update(array('bid' => $rs->num));
 
             return response()->json(array('msg'=> "succ", 'bid'=>$rs->num), 200);
         }
