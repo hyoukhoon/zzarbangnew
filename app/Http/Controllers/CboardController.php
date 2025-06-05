@@ -78,6 +78,7 @@ class CboardController extends Controller
         if(auth()->check()){
             $rs = Cboard::create($form_data);
             if($rs){//디비에 입력하면 엘라스틱에도
+                $multi = $request->multi??'ozzal';
                 $thumbnail="img";
                 $url = "/boards/show/".$rs."/1";
                 $dates = date("Y/m/d H:i:s");
