@@ -32,7 +32,7 @@ class CboardController extends Controller
         Cboard::find($bid)->increment('cnt');
         $boards = Cboard::findOrFail($bid);
         $boards->content = htmlspecialchars_decode($boards->content);
-        //if($boards->memo_cnt){//메모
+        if($boards->memo_cnt){//메모
             DB::enableQueryLog();
                 $memos = DB::table('memos')
                 ->select('memos.*')
@@ -41,7 +41,7 @@ class CboardController extends Controller
                 ->orderBy('memos.id', 'asc')
                 ->get();
             print_r(DB::getQueryLog());
-        //}
+        }
         return view("boards.show",['boards' => $boards]);
     }
 
