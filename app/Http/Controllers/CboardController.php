@@ -30,7 +30,14 @@ class CboardController extends Controller
 
     public function show($bid, $page = null){
         Cboard::find($bid)->increment('cnt');
-        $boards = Cboard::findOrFail($bid);
+        //$boards = Cboard::findOrFail($bid);
+        
+        DB::enableQueryLog();
+        $boards = DB::table('cboard as c1')
+                    ->select('cboard.*','(select num from cboard c2 where c2.num<c1.num order by num desc limit 1) as prevnum')
+                    ->where('num',$bid)->get();
+        print_r(DB::getQueryLog());
+
         $boards->content = htmlspecialchars_decode($boards->content);
         $memos = array();
         if($boards->memo_cnt){//메모
