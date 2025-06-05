@@ -28,7 +28,7 @@ class CboardController extends Controller
         return view("boards.index",['boards' => $boards, 'multi' => $multi]);
     }
 
-    public function show($bid,$page){
+    public function show($bid, $page = null){
         Cboard::find($bid)->increment('cnt');
         $boards = Cboard::findOrFail($bid);
         $boards->content = htmlspecialchars_decode($boards->content);
