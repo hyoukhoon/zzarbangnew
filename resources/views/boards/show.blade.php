@@ -127,8 +127,8 @@
     <div>
         <button type="button" class="btn btn-dark" id="scrap">스크랩</button>
 
-        <a href="/board/write.php?num=<?php echo $rs->num?>"><button type="button" class="btn btn-dark">수정</button></a>
-        <a href="/board/delete.php?num=<?php echo $rs->num?>"><button type="button" class="btn btn-dark" onclick="return confirm('삭제하시겠습니까?')">삭제</button></a>
+        <a href="/board/write.php?num=<?php echo $boards->num?>"><button type="button" class="btn btn-dark">수정</button></a>
+        <a href="/board/delete.php?num=<?php echo $boards->num?>"><button type="button" class="btn btn-dark" onclick="return confirm('삭제하시겠습니까?')">삭제</button></a>
 
         @if(Auth::user()->email)
             <button type="button" class="btn btn-danger"  data-bs-toggle="modal" data-bs-target="#police">신고</button>
