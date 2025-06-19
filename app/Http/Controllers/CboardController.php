@@ -32,7 +32,7 @@ class CboardController extends Controller
         Cboard::find($bid)->increment('cnt');
         //$boards = Cboard::findOrFail($bid);
         
-        DB::enableQueryLog();
+        //DB::enableQueryLog();
         $boards = DB::table('cboard as c1')
                     ->select('c1.*','m.photo','ml.mylevel','cg.good as mygood','cg.bad as mybad'
                         ,DB::raw("(select num from cboard c2 where c2.num < c1.num order by num desc limit 1) as prev")
@@ -45,12 +45,24 @@ class CboardController extends Controller
                         ->where('cg.userid', '=', Auth::user()->email);
                     })
                     ->where('c1.num',$bid)->first();
-        print_r(DB::getQueryLog());
+        //print_r(DB::getQueryLog());
         $boards->content = htmlspecialchars_decode($boards->content);
         if($boards->photo){
             $boards->userphoto="/board/upImages/thumb/".$boards->photo;
         }else{
             $boards->userphoto="/img/person-square.svg";
+        }
+
+        if($boards->mygood){
+            $boards->btu="/img/hand-thumbs-up-fill.svg";
+        }else{
+            $boards->btu="/img/hand-thumbs-up.svg";
+        }
+
+        if($boards->mybad){
+            $boards->btd="/img/hand-thumbs-down-fill.svg";
+        }else{
+            $boards->btd="/img/hand-thumbs-down.svg";
         }
 
         $memos = array();

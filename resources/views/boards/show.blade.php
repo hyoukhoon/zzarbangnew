@@ -93,17 +93,20 @@
 				<table width="120" align="center">
 					<tr align="center">
 						<td style="border: 1px solid;padding:5px;cursor:pointer;">
+                            <img src="{{ $boards->btu }}" style="width:30px;" id="t_up" nv="n" onclick="thumbpress('up');">
 						</td>
 						<td>&nbsp;</td>
 						<td style="border: 1px solid;padding:5px;cursor:pointer;">
-
+                            <img src="{{ $boards->btd }}" style="width:30px;" id="t_down" nv="n" onclick="thumbpress('down');">
 						</td>
 					</tr>
 					<tr align="center">
 						<td style="border: 1px solid" id="area_up">
+                            {{ number_format($boards->good) }}
 						</td>
 						<td>&nbsp;</td>
 						<td style="border: 1px solid" id="area_down">
+                            {{ number_format($boards->bad) }}
 						</td>
 					</tr>
 				</table>
