@@ -65,7 +65,7 @@
                         <tr>
                             <td style="text-align:left;padding:10px;">
                                 <a href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    <img src="{{$boards->userphoto}}" class="user-profile"> {{$boards->name}} {{member_level_icon($boards->mylevel)}}
+                                    <img src="{{$boards->userphoto}}" class="user-profile"> {{$boards->name}} {{member_level_icon($boards->mylevel??1)}}
                                 </a>
                                 <ul class="dropdown-menu">
                                     <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#msgModal" data-bs-whatever="@mdo"><span class="material-symbols-outlined" style="vertical-align: text-bottom;margin-right:5px;">forward_to_inbox</span>쪽지보내기</a></li>
