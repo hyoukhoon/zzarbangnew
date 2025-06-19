@@ -65,13 +65,13 @@
                         <tr>
                             <td style="text-align:left;padding:10px;">
                                 <a href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    <img src="{{$boards->userphoto}}" class="user-profile"> {{$boards->name}} {{member_level_icon($boards->mylevel??1)}}
+                                    <img src="{{$boards->userphoto}}" class="user-profile"> {{$boards->name}} {!! member_level_icon($boards->mylevel??1) !!}
                                 </a>
-                                <ul class="dropdown-menu">
+                                {{-- <ul class="dropdown-menu">
                                     <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#msgModal" data-bs-whatever="@mdo"><span class="material-symbols-outlined" style="vertical-align: text-bottom;margin-right:5px;">forward_to_inbox</span>쪽지보내기</a></li>
                                     <li><a class="dropdown-item" href="javascript:;" onclick="msg();"><span class="material-symbols-outlined" style="vertical-align: text-bottom;margin-right:5px;">forward_to_inbox</span>쪽지보내기</a></li>
                                 </ul>
-                                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">Open modal for @mdo</button>
+                                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">Open modal for @mdo</button> --}}
                             </td>
                             <td style="text-align:right;padding:10px;">
                                 <img src="/img/calendar-week.svg">
