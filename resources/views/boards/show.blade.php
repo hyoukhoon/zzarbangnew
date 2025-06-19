@@ -112,8 +112,12 @@
 				</table>
 				<br>
                 <div style="margin-bottom:10px;">
+                @if($boards->next)
                 <a href="/boards/show/{{ $boards->next }}"><span style="float:left;"><span class="material-symbols-outlined" style="vertical-align: text-bottom;">arrow_back_ios</span>다음짤</span></a>
+                @endif
+                @if($boards->prev)
                 <a href="/boards/show/{{ $boards->prev }}"><span style="float:right;">이전짤<span class="material-symbols-outlined" style="vertical-align: text-bottom;">arrow_forward_ios</span></span></a>
+                @endif
                 </div>
             </div>
         </div>
