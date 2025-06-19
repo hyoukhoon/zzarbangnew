@@ -38,7 +38,7 @@ class CboardController extends Controller
                     ,DB::raw("(select num from cboard c2 where c2.num < c1.num order by num desc limit 1) as prev")
                     ,DB::raw("(select num from cboard c2 where c2.num > c1.num order by num asc limit 1) as next"))
                     ->join("member as m","m.email", "=", "c1.email")
-                    ->join("member_levels as ml","ml.email", "=", "m.email")
+                    ->join("member_levels as ml","ml.userid", "=", "m.email")
                     ->where('c1.num',$bid)->first();
         //print_r(DB::getQueryLog());
         $boards->content = htmlspecialchars_decode($boards->content);
