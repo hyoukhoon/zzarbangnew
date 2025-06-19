@@ -75,7 +75,7 @@
                             </td>
                             <td style="text-align:right;padding:10px;">
                                 <img src="/img/calendar-week.svg">
-
+                                {{$boards->reg_date}}
                             </td>
                         </tr>
                     </table>
