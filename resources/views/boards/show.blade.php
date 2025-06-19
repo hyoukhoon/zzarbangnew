@@ -123,5 +123,22 @@
         </div>
     </div>
 
+    <br>
+    <div>
+        <button type="button" class="btn btn-dark" id="scrap">스크랩</button>
+
+        <a href="/board/write.php?num=<?php echo $rs->num?>"><button type="button" class="btn btn-dark">수정</button></a>
+        <a href="/board/delete.php?num=<?php echo $rs->num?>"><button type="button" class="btn btn-dark" onclick="return confirm('삭제하시겠습니까?')">삭제</button></a>
+
+        @if(Auth::user()->email)
+            <button type="button" class="btn btn-danger"  data-bs-toggle="modal" data-bs-target="#police">신고</button>
+        @else
+            <button type="button" class="btn btn-danger"  onclick="alert('회원 전용 기능입니다. 로그인 하십시오.');">신고</button>
+        @endif
+
+        <a href="#"><button type="button" class="btn btn-dark" style="float:right;">목록</button></a>
+        <button type="button" class="btn btn-primary" style="float:right;margin-right:5px;"  onclick="sharePage()">공유</button>
+    </div>
+
 
 @endsection
