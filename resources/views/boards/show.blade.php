@@ -65,7 +65,7 @@
                         <tr>
                             <td style="text-align:left;padding:10px;">
                                 <a href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    <img src="{{$boards->userphoto}}" class="user-profile">{{$boards->name}}
+                                    <img src="{{$boards->userphoto}}" class="user-profile"> {{$boards->name}} {{member_level_icon($boards->mylevel)}}
                                 </a>
                                     <ul class="dropdown-menu">
 

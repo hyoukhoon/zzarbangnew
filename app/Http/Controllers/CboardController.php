@@ -34,7 +34,7 @@ class CboardController extends Controller
         
         //DB::enableQueryLog();
         $boards = DB::table('cboard as c1')
-                    ->select('c1.*','m.photo'
+                    ->select('c1.*','m.photo','m.mylevel'
                     ,DB::raw("(select num from cboard c2 where c2.num < c1.num order by num desc limit 1) as prev")
                     ,DB::raw("(select num from cboard c2 where c2.num > c1.num order by num asc limit 1) as next"))
                     ->join("member as m","m.email", "=", "c1.email")

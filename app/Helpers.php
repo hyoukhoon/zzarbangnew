@@ -78,4 +78,23 @@ function boardtitle($multi){
     return $name;
 }
 
+function member_level_icon($n){
+
+    switch($n) {
+        case 1:$rs="<span class=\"material-symbols-outlined\" style=\"vertical-align: text-bottom;\">looks_one</span>";
+        break;
+        case 2:$rs="<span class=\"material-symbols-outlined\" style=\"vertical-align: text-bottom;\">looks_two</span>";
+        break;
+        case 3:$rs="<span class=\"material-symbols-outlined\" style=\"vertical-align: text-bottom;\">looks_3</span>";
+        break;
+        case 4:$rs="<span class=\"material-symbols-outlined\" style=\"vertical-align: text-bottom;\">looks_4</span>";
+        break;
+        case 5:$rs="<span class=\"material-symbols-outlined\" style=\"vertical-align: text-bottom;\">looks_5</span>";
+        break;
+        case 6:$rs="<span class=\"material-symbols-outlined\" style=\"vertical-align: text-bottom;\">looks_6</span>";
+        break;
+    }
+    return $rs;
+}
+
 ?>
