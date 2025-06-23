@@ -67,14 +67,27 @@ class CboardController extends Controller
 
         $memos = array();
         if($boards->memo_cnt){//메모
-            //DB::enableQueryLog();
-                $memos = DB::table('memos')
-                ->select('memos.*')
-                ->where('memos.bid', $bid)->where('memos.status',1)
-                ->orderByRaw('IFNULL(memos.pid,memos.id), memos.pid ASC')
-                ->orderBy('memos.id', 'asc')
+            DB::enableQueryLog();
+                $memos = DB::table('xc_memo as m')
+                ->join('xc_member as b', 'm.userid', '=', 'b.email')
+                ->leftJoin('xc_member_levels as ml', 'ml.userid', '=', 'm.userid')
+                ->leftJoin(DB::raw('(
+                    select mg.memoid, sum(mg.good) as gn, sum(mg.bad) as bn
+                    from xc_memo_grade mg
+                    group by mg.memoid
+                ) as z'), 'z.memoid', '=', 'm.memoid')
+                ->select(
+                    'm.*',
+                    'b.photo',
+                    'ml.mylevel',
+                    'z.gn',
+                    'z.bn'
+                )
+                ->where('m.status', 1)
+                ->where('m.bid', $bid)
+                ->orderByRaw('IFNULL(m.pid, m.memoid) ASC, m.memoid ASC')
                 ->get();
-            //print_r(DB::getQueryLog());
+            print_r(DB::getQueryLog());
         }
         return view("boards.show",['boards' => $boards, 'memos' => $memos]);
     }
