@@ -66,7 +66,7 @@ class CboardController extends Controller
         }
 
         $memos = array();
-        if($boards->memo_cnt){//메모
+        //if($boards->memo_cnt){//메모
             DB::enableQueryLog();
                 $memos = DB::table('xc_memo as m')
                 ->join('xc_member as b', 'm.userid', '=', 'b.email')
@@ -88,7 +88,7 @@ class CboardController extends Controller
                 ->orderByRaw('IFNULL(m.pid, m.memoid) ASC, m.memoid ASC')
                 ->get();
             print_r(DB::getQueryLog());
-        }
+        //}
         return view("boards.show",['boards' => $boards, 'memos' => $memos]);
     }
 
