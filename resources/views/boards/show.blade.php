@@ -118,9 +118,7 @@
                 <a href="/boards/show/{{ $boards->prev }}"><span style="float:right;">이전짤<span class="material-symbols-outlined" style="vertical-align: text-bottom;">arrow_forward_ios</span></span></a>
                 @endif
                 </div>
-            </div>
-        </div>
-    </div>
+            
 
     <br>
     <div>
@@ -155,7 +153,10 @@
 		  <button type="button" class="btn btn-secondary" style="float:right;" id="memo_submit">입력</button>
     </div>
 <br><br>
-<div id="clicks" style="text-align:center;"></div>
 
+
+</div>
+</div>
+</div>
 </div><!-- container -->
 @endsection
