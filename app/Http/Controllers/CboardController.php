@@ -68,24 +68,18 @@ class CboardController extends Controller
         $memos = array();
         //if($boards->memo_cnt){//메모
             DB::enableQueryLog();
-                $memos = DB::table('xc_memo as m')
-                ->join('xc_member as b', 'm.userid', '=', 'b.email')
-                ->leftJoin('xc_member_levels as ml', 'ml.userid', '=', 'm.userid')
-                ->leftJoin(DB::raw('(
-                    select mg.memoid, sum(mg.good) as gn, sum(mg.bad) as bn
-                    from xc_memo_grade mg
-                    group by mg.memoid
-                ) as z'), 'z.memoid', '=', 'm.memoid')
-                ->select(
-                    'm.*',
-                    'b.photo',
-                    'ml.mylevel',
-                    'z.gn',
-                    'z.bn'
-                )
-                ->where('m.status', 1)
-                ->where('m.bid', $bid)
-                ->orderByRaw('IFNULL(m.pid, m.memoid) ASC, m.memoid ASC')
+                $memos = Memo::query()
+                ->select('xc_memo.*', 'xc_member.photo', 'xc_member_levels.mylevel', 'z.gn', 'z.bn')
+                ->join('xc_member', 'xc_memo.userid', '=', 'xc_member.email')
+                ->leftJoin('xc_member_levels', 'xc_member_levels.userid', '=', 'xc_memo.userid')
+                ->leftJoinSub(function ($query) {
+                    $query->select('memoid', DB::raw('sum(good) as gn'), DB::raw('sum(bad) as bn'))
+                        ->from('xc_memo_grade')
+                        ->groupBy('memoid');
+                }, 'z', 'z.memoid', '=', 'xc_memo.memoid')
+                ->where('xc_memo.status', 1)
+                ->where('xc_memo.bid', $bid)
+                ->orderByRaw('ifnull(xc_memo.pid, xc_memo.memoid) asc, xc_memo.memoid asc')
                 ->get();
             print_r(DB::getQueryLog());
         //}
