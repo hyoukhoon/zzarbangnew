@@ -140,5 +140,21 @@
         <button type="button" class="btn btn-primary" style="float:right;margin-right:5px;"  onclick="sharePage()">공유</button>
     </div>
 
+    <div class="input-group" id="firstmemo" style="margin-top:10px;margin-bottom:10px;">
+		<input type="hidden" name="memo_file" id="memo_file">
+		<span class="input-group-text" id="memo_image_view"  style="display:none;"></span>
+		<button type="button" id="togglememoimage" class="btn btn-seconday dropdown-toggle border" data-bs-toggle="dropdown" aria-expanded="false">
+			이미지첨부
+		  </button>
+		  <ul class="dropdown-menu">
+			<li><a class="dropdown-item"  id="replyimage">기존댓글에서선택</a></li>
+			<li><hr class="dropdown-divider"></li>
+			<li><a class="dropdown-item"  id="memo_image">내파일에서선택</a></li>
+		  </ul>
+		  <input type="file" name="upfile" id="upfile" accept="image/*" style="display:none;" />
+		  <textarea class="form-control" aria-label="With textarea" style="height:100px;" name="memo" id="memo" placeholder="댓글을 입력해주세요"></textarea>
+		  <button type="button" class="btn btn-secondary" style="float:right;" id="memo_submit">입력</button>
+    </div>
+
 
 @endsection
