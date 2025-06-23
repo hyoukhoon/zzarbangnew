@@ -45,8 +45,7 @@
     width: 100%;
     height: 100%;
     }
-</style>
-<style type="text/css">
+
     .row a:link{color: black;}
     .row a:visited{color: black;}
 </style>
@@ -155,6 +154,8 @@
 		  <textarea class="form-control" aria-label="With textarea" style="height:100px;" name="memo" id="memo" placeholder="댓글을 입력해주세요"></textarea>
 		  <button type="button" class="btn btn-secondary" style="float:right;" id="memo_submit">입력</button>
     </div>
+<br><br>
+<div id="clicks" style="text-align:center;"></div>
 
-
+</div><!-- container -->
 @endsection
