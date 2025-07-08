@@ -25,7 +25,7 @@
 	<meta name="msapplication-TileColor" content="#ffffff">
 	<meta name="msapplication-TileImage" content="/img/favi/ms-icon-144x144.png">
 	<meta name="theme-color" content="#ffffff">
-    <title>Contabo 사이트</title>
+    <title>Contabo Site</title>
 
 <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/offcanvas-navbar/">
  <link href="/assets/dist/css/bootstrap.min.css" rel="stylesheet">
