@@ -201,7 +201,7 @@ class CboardController extends Controller
             $rs=Memo::create($form_data);
             if($rs){
                 CBoard::find($request->bid)->increment('memo_cnt');//부모글의 댓글 갯수 업데이트
-                CBoard::where('bid', $request->bid)->update([//부모글의 댓글 날짜 업데이트
+                CBoard::where('num', $request->bid)->update([//부모글의 댓글 날짜 업데이트
                     'memo_date' => date('Y-m-d H:i:s')
                 ]);
                 if($request->memo_file){
