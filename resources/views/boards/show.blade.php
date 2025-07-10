@@ -159,4 +159,79 @@
 </div>
 </div>
 </div><!-- container -->
+
+<script>
+    $("#memo_submit").click(function () {
+        var memo=$("#memo").val();
+        var memo_file=$("#memo_file").val();
+        if(!memo && !memo_file){
+                alert("댓글이나 첨부파일을 입력하세요");
+                return;
+        }
+
+        var data = {
+                memo : memo ,
+                num : <?php echo $num;?>,
+                memo_file : memo_file
+            };
+
+        $.ajax({
+            headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+            async : false ,
+            type : 'post' ,
+            url : '/boards/memowrite' ,
+            data  : data ,
+            dataType : 'html' ,
+            error : function() {} ,
+            success : function(return_data) {
+            if(return_data=="login"){
+                alert('로그인 하십시오.');
+                location.href='/member/login';
+                return;
+            }else if(return_data=="memo"){
+                alert('댓글을 입력하세요.');
+                return;
+            }else if(return_data=="badwords"){
+                alert('댓글에 금칙어가 포함돼 있습니다.');
+                return;
+            }else{
+                $('#memo').val('')
+                //$('#memo_image').html('이미지<br>첨부');
+                $("#memo_image_view").hide();
+    //			$("#togglememoimage").show();
+                $("#firstmemo").hide();
+                $('#reply').append(return_data);
+            }
+            }
+            , beforeSend: function () {
+                var width = 0;
+                var height = 0;
+                var left = 0;
+                var top = 0;
+                width = 50;
+                height = 50;
+
+                top = ( $(window).height() - height ) / 2 + $(window).scrollTop();
+                left = ( $(window).width() - width ) / 2 + $(window).scrollLeft();
+
+                if($("#div_ajax_load_image").length != 0) {
+                        $("#div_ajax_load_image").css({
+                                "top": top+"px",
+                                "left": left+"px"
+                        });
+                        $("#div_ajax_load_image").show();
+                }
+                else {
+                        $('body').append('<div id="div_ajax_load_image" style="position:absolute; top:' + top + 'px; left:' + left + 'px; width:' + width + 'px; height:' + height + 'px; z-index:9999;" class="spinner-border" role="status"><span class="visually-hidden">Loading...</span></div>');
+                }
+
+        }
+            , complete: function () {
+                        $("#div_ajax_load_image").hide();
+        }
+        });
+    });
+</script>
+
+
 @endsection

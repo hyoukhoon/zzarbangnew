@@ -186,4 +186,30 @@ class CboardController extends Controller
             return response()->json(array('msg'=> "로그인 하십시오", 'result'=>'fail'), 200);
         }
     }
+
+    public function memowrite(Request $request)
+    {
+        $form_data = array(
+            'memo' => $request->memo,
+            'bid' => $request->bid,
+            'pid' => $request->pid??null,
+            'userid' => Auth::user()->email,
+            'name' => Auth::user()->nickname
+        );
+
+        if(auth()->check()){
+            $rs=Memo::create($form_data);
+            if($rs){
+                CBoard::find($request->bid)->increment('memo_cnt');//부모글의 댓글 갯수 업데이트
+                CBoard::where('bid', $request->bid)->update([//부모글의 댓글 날짜 업데이트
+                    'memo_date' => date('Y-m-d H:i:s')
+                ]);
+                if($request->memo_file){
+                    FileTables::where('filename', $request->memo_file)->where('userid', Auth::user()->email)->where('code','memoattach')->update(array('pid' => $rs->id));
+                }
+            }
+
+            return response()->json(array('msg'=> "succ", 'num'=>$rs), 200);
+        }
+    }
 }

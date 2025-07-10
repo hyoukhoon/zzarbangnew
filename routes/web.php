@@ -45,3 +45,4 @@ Route::get('/boards/write/{multi}/{bid?}', [CboardController::class, 'write'])->
 Route::get('/boards/summernote/{multi}/{bid?}', [CboardController::class, 'summernote'])->name('boards.summernote');
 Route::post('/boards/create', [CboardController::class, 'create'])->name('boards.create');
 Route::post('/boards/saveimage', [CboardController::class, 'saveimage'])->name('boards.saveimage');
+Route::post('/boards/memowrite', [CboardController::class, 'memowrite'])->name('boards.memowrite');
