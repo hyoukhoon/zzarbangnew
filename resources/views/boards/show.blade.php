@@ -184,14 +184,14 @@
             dataType : 'html' ,
             error : function() {} ,
             success : function(return_data) {
-            if(return_data->msg=="login"){
+            if(return_data.msg=="login"){
                 alert('로그인 하십시오.');
                 location.href='/member/login';
                 return;
-            }else if(return_data->msg=="memo"){
+            }else if(return_data.msg=="memo"){
                 alert('댓글을 입력하세요.');
                 return;
-            }else if(return_data->msg=="badwords"){
+            }else if(return_data.msg=="badwords"){
                 alert('댓글에 금칙어가 포함돼 있습니다.');
                 return;
             }else{
