@@ -171,7 +171,7 @@
 
         var data = {
                 memo : memo ,
-                num : <?php echo $num;?>,
+                num : {{$boards->num}},
                 memo_file : memo_file
             };
 
