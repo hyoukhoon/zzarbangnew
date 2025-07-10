@@ -171,7 +171,7 @@
 
         var data = {
                 memo : memo ,
-                num : {{$boards->num}},
+                bid : {{$boards->num}},
                 memo_file : memo_file
             };
 
