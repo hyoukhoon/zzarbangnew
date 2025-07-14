@@ -124,8 +124,8 @@
     <div>
         <button type="button" class="btn btn-dark" id="scrap">스크랩</button>
 
-        <a href="/board/write.php?num=<?php echo $boards->num?>"><button type="button" class="btn btn-dark">수정</button></a>
-        <a href="/board/delete.php?num=<?php echo $boards->num?>"><button type="button" class="btn btn-dark" onclick="return confirm('삭제하시겠습니까?')">삭제</button></a>
+        <a href="/board/write.php?num={{ $boards->num }}"><button type="button" class="btn btn-dark">수정</button></a>
+        <a href="/board/delete.php?num={{ $boards->num }}"><button type="button" class="btn btn-dark" onclick="return confirm('삭제하시겠습니까?')">삭제</button></a>
 
         @if(Auth::user()->email)
             <button type="button" class="btn btn-danger"  data-bs-toggle="modal" data-bs-target="#police">신고</button>
@@ -136,6 +136,60 @@
         <a href="#"><button type="button" class="btn btn-dark" style="float:right;">목록</button></a>
         <button type="button" class="btn btn-primary" style="float:right;margin-right:5px;"  onclick="sharePage()">공유</button>
     </div>
+<!--댓글 시작 -->
+	<!-- 댓글 -->
+	<div class="btn btn-secondary" style="margin-top:10px;">
+        댓글 <span id="memo_cnt_area"></span>개
+    </div>
+    <div id="reply">
+        <div class="card mt-2" id="memolist_{{ $memos->memoid }}">
+            <div class="card-header p-2">
+                <table>
+                    <tbody><tr class="align-middle">
+                        <td rowspan="2" class="pr-2">
+                            <span class="material-symbols-outlined" style="font-size:40px;">record_voice_over</span>
+                        </td>
+                        <td class="ml">{{ $memos->name }}레벨</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <font size="2">{{ $memos->regdate }}</font> 
+                                <span style="cursor:pointer" onclick="#"></span>
+                        </td>
+                    </tr>
+                </tbody></table>
+            </div>
+            <div class="card-body">
+                댓글이미지
+                <p class="card-text">댓글내용</p>
+                <span class="badge bg-secondary" style="cursor:pointer;padding:10px;"><a onclick="reply_write('{{ $memos->memoid }}','{{ $memos->bid }}')">답글</a></span>
+                <span class="badge bg-secondary" style="cursor:pointer;padding:10px;"><a onclick="memo_delete('{{ $memos->memoid }}','{{ $memos->bid }}')">삭제</a></span>
+                <span style="float:right;">
+                    <table width="160" align="center">
+                        <tr align="center">
+                            <td style="border: 1px solid;padding:5px;cursor:pointer;" onclick="memothumb('up',{{ $memos->memoid }});">
+                                <i id="mupc_{{ $memos->memoid }}" class="bi bi-emoji-heart-eyes" style="vertical-align: text-bottom;"></i>
+                                <span id="mup_{{ $memos->memoid }}">{{ $memos->gn }}</span>
+                            </td>
+                            <td>&nbsp;</td>
+                            <td style="border: 1px solid;padding:5px;cursor:pointer;" onclick="memothumb('down',{{ $memos->memoid }});">
+                                <i id="mdnc_{{ $memos->memoid }}" class="bi bi-emoji-angry" style="vertical-align: text-bottom;"></i>
+                                <span id="mdn_{{ $memos->memoid }}">{{ $memos->bn }}</span>
+                            </td>
+                            <td>&nbsp;</td>
+                            <td style="border: 1px solid;padding:5px;cursor:pointer;color:red;">
+                                <a href="javascript:;"  onclick="memopolice({{ $memos->memoid }});">
+                                <span class="material-symbols-outlined"  style="vertical-align: text-bottom;color:red;">local_police</span></a>
+                            </td>
+                        </tr>
+                    </table>
+                </span>
+            </div>
+        </div>
+        
+            
+    </div>
+<!--댓글 끝 -->
 
     <div class="input-group" id="firstmemo" style="margin-top:10px;margin-bottom:10px;">
 		<input type="hidden" name="memo_file" id="memo_file">
@@ -187,12 +241,6 @@
             if(return_data.msg=="login"){
                 alert('로그인 하십시오.');
                 location.href='/member/login';
-                return;
-            }else if(return_data.msg=="memo"){
-                alert('댓글을 입력하세요.');
-                return;
-            }else if(return_data.msg=="badwords"){
-                alert('댓글에 금칙어가 포함돼 있습니다.');
                 return;
             }else{
                 $('#memo').val('')
