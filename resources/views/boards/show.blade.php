@@ -163,8 +163,12 @@
                 </tbody></table>
             </div>
             <div class="card-body">
-                댓글이미지
-                <p class="card-text">댓글내용</p>
+                @if($memo->memo_file)
+                    <img src='/board/upImages/data/{{$memo->memo_file}}' class='memo-image'>
+                @endif
+                <p class="card-text">
+                    {!! $memo->memo !!}
+                </p>
                 <span class="badge bg-secondary" style="cursor:pointer;padding:10px;"><a onclick="reply_write('{{ $memo->memoid }}','{{ $memo->bid }}')">답글</a></span>
                 <span class="badge bg-secondary" style="cursor:pointer;padding:10px;"><a onclick="memo_delete('{{ $memo->memoid }}','{{ $memo->bid }}')">삭제</a></span>
                 <span style="float:right;">

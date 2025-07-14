@@ -81,17 +81,17 @@ function boardtitle($multi){
 function member_level_icon($n){
 
     switch($n) {
-        case 1:$rs="<span class=\"material-symbols-outlined\" style=\"vertical-align: text-bottom;\">looks_one</span>";
+        case 1:$rs="<span class=\"material-symbols-outlined\" style=\"vertical-align: bottom;\">looks_one</span>";
         break;
-        case 2:$rs="<span class=\"material-symbols-outlined\" style=\"vertical-align: text-bottom;\">looks_two</span>";
+        case 2:$rs="<span class=\"material-symbols-outlined\" style=\"vertical-align: bottom;\">looks_two</span>";
         break;
-        case 3:$rs="<span class=\"material-symbols-outlined\" style=\"vertical-align: text-bottom;\">looks_3</span>";
+        case 3:$rs="<span class=\"material-symbols-outlined\" style=\"vertical-align: bottom;\">looks_3</span>";
         break;
-        case 4:$rs="<span class=\"material-symbols-outlined\" style=\"vertical-align: text-bottom;\">looks_4</span>";
+        case 4:$rs="<span class=\"material-symbols-outlined\" style=\"vertical-align: bottom;\">looks_4</span>";
         break;
-        case 5:$rs="<span class=\"material-symbols-outlined\" style=\"vertical-align: text-bottom;\">looks_5</span>";
+        case 5:$rs="<span class=\"material-symbols-outlined\" style=\"vertical-align: bottom;\">looks_5</span>";
         break;
-        case 6:$rs="<span class=\"material-symbols-outlined\" style=\"vertical-align: text-bottom;\">looks_6</span>";
+        case 6:$rs="<span class=\"material-symbols-outlined\" style=\"vertical-align: bottom;\">looks_6</span>";
         break;
     }
     return $rs;
