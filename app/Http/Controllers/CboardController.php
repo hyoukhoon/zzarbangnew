@@ -206,11 +206,56 @@ class CboardController extends Controller
                     'memo_date' => date('Y-m-d H:i:s')
                 ]);
                 if($request->memo_file){
-                    FileTables::where('filename', $request->memo_file)->where('userid', Auth::user()->email)->where('code','memoattach')->update(array('pid' => $rs->id));
+                    FileTables::where('filename', $request->memo_file)->where('userid', Auth::user()->email)->where('code','memoattach')->update(array('pid' => $rs->memoid));
                 }
+
+                $ms = Member::where('username', Auth::user()->email)->first();
+                if($ms->photo){
+                    $memo_photo= "<img src=\"/board/upImages/thumb/".$ms->photo."\" class=\"memo-profile\">";
+                }else{
+                    $memo_photo= "<span class=\"material-symbols-outlined\" style=\"font-size:40px;\">record_voice_over</span>";
+                }
+
+                if($request->memo_file){
+                    $memo_image="<img src='/board/upImages/data/".$request->memo_file."' class='memo-image'>";
+                }
+
+                $html="<div class=\"d-flex\" id=\"memolist_".$rs->memoid."\">
+                    <div class=\"p-2\">
+                    <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"currentColor\" class=\"bi bi-arrow-return-right\" viewBox=\"0 0 16 16\">
+                    <path fill-rule=\"evenodd\" d=\"M1.5 1.5A.5.5 0 0 0 1 2v4.8a2.5 2.5 0 0 0 2.5 2.5h9.793l-3.347 3.346a.5.5 0 0 0 .708.708l4.2-4.2a.5.5 0 0 0 0-.708l-4-4a.5.5 0 0 0-.708.708L13.293 8.3H3.5A1.5 1.5 0 0 1 2 6.8V2a.5.5 0 0 0-.5-.5z\"/>
+                    </svg>
+                    </div>
+                    <div class=\"flex-fill\" style=\"width:100%\">
+                        <div class=\"card mt-2\">
+                            <div class=\"card-header\">
+                                <table>
+                                    <tbody><tr class=\"align-middle\">
+                                        <td rowspan=\"2\" class=\"pr-2\">
+                                            ".$memo_photo."
+                                        </td>
+                                        <td class=\"ml\">".$ms->name."</td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <font size=\"2\">".date("Y-m-d H:i:s")."</font> 
+                                            <span style=\"cursor:pointer\" onclick=\"#\"></span>
+                                        </td>
+                                    </tr>
+                                </tbody></table>
+                            </div>
+                            <div class=\"card-body\">
+                                ".$memo_image."
+                                <p class=\"card-text\">".stripslashes(nl2br($request->memo))."</p>
+                                <span class=\"badge bg-secondary\" style=\"cursor:pointer;padding:10px;\"><a onclick=\"memo_delete('".$rs->memoid."','".$request->bid."')\">삭제</a></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>";
+
             }
 
-            return response()->json(array('msg'=> "succ", 'num'=>$rs), 200);
+            return response()->json(array('msg'=> "succ", 'num'=>$rs, 'html'=>$html), 200);
         }else{
             return response()->json(array('msg'=> "login", 'num'=>$rs), 200);
         }
