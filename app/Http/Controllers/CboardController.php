@@ -218,6 +218,8 @@ class CboardController extends Controller
 
                 if($request->memo_file){
                     $memo_image="<img src='/board/upImages/data/".$request->memo_file."' class='memo-image'>";
+                }else{
+                    $memo_image="";
                 }
 
                 $html="<div class=\"d-flex\" id=\"memolist_".$rs->memoid."\">
