@@ -139,8 +139,9 @@
 <!--댓글 시작 -->
 	<!-- 댓글 -->
 	<div class="btn btn-secondary" style="margin-top:10px;">
-        댓글 <span id="memo_cnt_area"></span>개
+        댓글 <span id="memo_cnt_area">{{ number_format($boards->memo_cnt) }}</span>개
     </div>
+    @if($boards->memo_cnt>0)
     <div id="reply">
         <div class="card mt-2" id="memolist_{{ $memos->memoid }}">
             <div class="card-header p-2">
@@ -186,9 +187,8 @@
                 </span>
             </div>
         </div>
-        
-            
     </div>
+    @endif
 <!--댓글 끝 -->
 
     <div class="input-group" id="firstmemo" style="margin-top:10px;margin-bottom:10px;">
