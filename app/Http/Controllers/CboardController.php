@@ -188,6 +188,29 @@ class CboardController extends Controller
         }
     }
 
+    public function memodelete(Request $request)
+    {
+        $data = Memo::findOrFail($request->memoid);
+        if(Auth::user()->email==$data->userid){
+            $rs = Memo::where('memoid', $request->memoid)->update(array('status' => 0));
+            if($rs){
+                CBoard::find($request->num)->decrement('memo_cnt');
+                $fs=FileTables::where('pid', $data->memoid)->get();
+                if($fs){
+                    foreach($fs as $f){
+                        if(FileTables::where('id', $f->id)->where('userid', Auth::user()->email)->update(array('status' => 0))){
+                            //unlink(public_path('images')."/".$f->filename);
+                            Storage::delete('images/'.$f->filename);
+                        }
+                    }
+                }
+            }
+            return response()->json(array('msg'=> "succ", 'num'=>$rs), 200);
+        }else{
+            return response()->json(array('msg'=> "fail", 'val'=>"본인이 작성한 글만 삭제할 수 있습니다."), 200);
+        }
+    }
+
     public function memowrite(Request $request)
     {
         $form_data = array(

@@ -46,3 +46,4 @@ Route::get('/boards/summernote/{multi}/{bid?}', [CboardController::class, 'summe
 Route::post('/boards/create', [CboardController::class, 'create'])->name('boards.create');
 Route::post('/boards/saveimage', [CboardController::class, 'saveimage'])->name('boards.saveimage');
 Route::post('/boards/memowrite', [CboardController::class, 'memowrite'])->name('boards.memowrite');
+Route::post('/boards/memodelete', [CboardController::class, 'memodelete'])->name('boards.memodelete');

@@ -290,6 +290,42 @@
         }
         });
     });
+
+    function memo_delete(memoid,bid){
+
+        if(!confirm('삭제하시겠습니까?')){
+            return false;
+        }
+
+        var data = {
+                num : bid,
+                memoid : memoid
+            };
+
+        $.ajax({
+            async : false ,
+            type : 'post' ,
+            url : '/boards/memodelete' ,
+            data  : data ,
+            dataType : 'json' ,
+            error : function() {} ,
+            success : function(return_data) {
+            if(return_data.msg=="fail"){
+                alert(return_data.val);
+                //location.href='/member/login.php';
+                return;
+            }else if(return_data.result=="succ"){
+                    $('#memolist_'+memoid).remove();
+                    $('#memo_cnt_area').text({{ $boards->memo_cnt-1 }})
+                    //alert(return_data.val);
+            }else{
+                alert('관리자에게 문의하십시오.');
+                return;
+            }
+            }
+        });
+
+        }
 </script>
 
 
