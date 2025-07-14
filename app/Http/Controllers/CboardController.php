@@ -195,7 +195,7 @@ class CboardController extends Controller
             'bid' => $request->bid,
             'pid' => $request->pid??null,
             'userid' => Auth::user()->email,
-            'name' => Auth::user()->nickname
+            'name' => Auth::user()->nickName
         );
 
         if(auth()->check()){
