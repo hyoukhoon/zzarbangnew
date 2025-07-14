@@ -209,7 +209,7 @@ class CboardController extends Controller
                     FileTables::where('filename', $request->memo_file)->where('userid', Auth::user()->email)->where('code','memoattach')->update(array('pid' => $rs->memoid));
                 }
 
-                $ms = Member::where('username', Auth::user()->email)->first();
+                $ms = Member::where('email', Auth::user()->email)->first();
                 if($ms->photo){
                     $memo_photo= "<img src=\"/board/upImages/thumb/".$ms->photo."\" class=\"memo-profile\">";
                 }else{
