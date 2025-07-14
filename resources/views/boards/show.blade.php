@@ -142,8 +142,52 @@
         댓글 <span id="memo_cnt_area">{{ number_format($boards->memo_cnt) }}</span>개
     </div>
     @if($boards->memo_cnt)
-    {{ print_r($memos)}}
-    
+    <div id="reply">
+        <div class="card mt-2" id="memolist_{{ $memos->memoid }}">
+            <div class="card-header p-2">
+                <table>
+                    <tbody><tr class="align-middle">
+                        <td rowspan="2" class="pr-2">
+                            <span class="material-symbols-outlined" style="font-size:40px;">record_voice_over</span>
+                        </td>
+                        <td class="ml">{{ $memos->name }}레벨</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <font size="2">{{ $memos->regdate }}</font> 
+                                <span style="cursor:pointer" onclick="#"></span>
+                        </td>
+                    </tr>
+                </tbody></table>
+            </div>
+            <div class="card-body">
+                댓글이미지
+                <p class="card-text">댓글내용</p>
+                <span class="badge bg-secondary" style="cursor:pointer;padding:10px;"><a onclick="reply_write('{{ $memos->memoid }}','{{ $memos->bid }}')">답글</a></span>
+                <span class="badge bg-secondary" style="cursor:pointer;padding:10px;"><a onclick="memo_delete('{{ $memos->memoid }}','{{ $memos->bid }}')">삭제</a></span>
+                <span style="float:right;">
+                    <table width="160" align="center">
+                        <tr align="center">
+                            <td style="border: 1px solid;padding:5px;cursor:pointer;" onclick="memothumb('up',{{ $memos->memoid }});">
+                                <i id="mupc_{{ $memos->memoid }}" class="bi bi-emoji-heart-eyes" style="vertical-align: text-bottom;"></i>
+                                <span id="mup_{{ $memos->memoid }}">{{ $memos->gn }}</span>
+                            </td>
+                            <td>&nbsp;</td>
+                            <td style="border: 1px solid;padding:5px;cursor:pointer;" onclick="memothumb('down',{{ $memos->memoid }});">
+                                <i id="mdnc_{{ $memos->memoid }}" class="bi bi-emoji-angry" style="vertical-align: text-bottom;"></i>
+                                <span id="mdn_{{ $memos->memoid }}">{{ $memos->bn }}</span>
+                            </td>
+                            <td>&nbsp;</td>
+                            <td style="border: 1px solid;padding:5px;cursor:pointer;color:red;">
+                                <a href="javascript:;"  onclick="memopolice({{ $memos->memoid }});">
+                                <span class="material-symbols-outlined"  style="vertical-align: text-bottom;color:red;">local_police</span></a>
+                            </td>
+                        </tr>
+                    </table>
+                </span>
+            </div>
+        </div>
+    </div>
     @endif
 <!--댓글 끝 -->
 
