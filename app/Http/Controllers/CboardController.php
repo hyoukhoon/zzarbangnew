@@ -68,12 +68,12 @@ class CboardController extends Controller
         $memos = array();
         if($boards->memo_cnt){//메모
             DB::enableQueryLog();
-                $memos = DB::table('xc_memo as m')
-                ->join('xc_member as b', 'm.userid', '=', 'b.email')
-                ->leftJoin('xc_member_levels as ml', 'ml.userid', '=', 'm.userid')
+                $memos = DB::table('memo as m')
+                ->join('member as b', 'm.userid', '=', 'b.email')
+                ->leftJoin('member_levels as ml', 'ml.userid', '=', 'm.userid')
                 ->leftJoin(DB::raw('(
                     select mg.memoid, sum(mg.good) as gn, sum(mg.bad) as bn
-                    from xc_memo_grade mg
+                    from memo_grade mg
                     group by mg.memoid
                 ) as z'), 'z.memoid', '=', 'm.memoid')
                 ->select(
