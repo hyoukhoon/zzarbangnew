@@ -150,7 +150,11 @@
                 <table>
                     <tbody><tr class="align-middle">
                         <td rowspan="2" class="pr-2">
-                            <span class="material-symbols-outlined" style="font-size:40px;">record_voice_over</span>
+                            @if($memo->photo)
+                                <img src="/board/upImages/thumb/{!! $memo->photo !!}" class="memo-profile">
+                            @else
+                                <span class="material-symbols-outlined" style="font-size:40px;">record_voice_over</span>
+                            @endif
                         </td>
                         <td class="ml">{{ $memo->name }} | {!! member_level_icon($memo->mylevel) !!}</td>
                     </tr>
@@ -255,7 +259,7 @@
                 $("#memo_image_view").hide();
     //			$("#togglememoimage").show();
                 $("#firstmemo").hide();
-                $('#reply').append(return_data);
+                $('#reply').append(return_data.html);
             }
             }
             , beforeSend: function () {
