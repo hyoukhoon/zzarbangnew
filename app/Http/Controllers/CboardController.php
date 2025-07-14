@@ -255,6 +255,30 @@ class CboardController extends Controller
                     </div>
                 </div>";
 
+                $html="<div class=\"card mt-2\" id=\"memolist_".$rs->memoid."\">
+						<div class=\"card-header p-2\">
+							<table>
+								<tbody><tr class=\"align-middle\">
+									<td rowspan=\"2\" class=\"pr-2\">
+										".$memo_photo."
+									</td>
+									<td class=\"ml\">".$ms->name."</td>
+								</tr>
+								<tr>
+									<td>
+										<font size=\"2\">".date("Y-m-d H:i:s")."</font> 
+											<span style=\"cursor:pointer\" onclick=\"#\"></span>
+									</td>
+								</tr>
+							</tbody></table>
+						</div>
+						<div class=\"card-body\">
+							".$memo_image."
+							<p class=\"card-text\">".stripslashes(nl2br($request->memo))."</p>
+							<span class=\"badge bg-secondary\" style=\"cursor:pointer;padding:10px;\"><a onclick=\"memo_delete('".$rs->memoid."','".$request->bid."')\">삭제</a></span>
+						</div>
+					</div>";
+
             }
 
             return $html;
