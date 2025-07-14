@@ -257,9 +257,9 @@ class CboardController extends Controller
 
             }
 
-            return response()->json(array('msg'=> "succ", 'num'=>$rs, 'html'=>$html), 200);
+            return $html;
         }else{
-            return response()->json(array('msg'=> "login", 'num'=>$rs), 200);
+            return "login";
         }
     }
 }

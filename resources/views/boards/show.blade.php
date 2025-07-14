@@ -249,7 +249,7 @@
             dataType : 'html' ,
             error : function() {} ,
             success : function(return_data) {
-            if(return_data.msg=="login"){
+            if(return_data=="login"){
                 alert('로그인 하십시오.');
                 location.href='/member/login';
                 return;
@@ -259,7 +259,7 @@
                 $("#memo_image_view").hide();
     //			$("#togglememoimage").show();
                 $("#firstmemo").hide();
-                $('#reply').append(return_data.html);
+                $('#reply').append(return_data);
             }
             }
             , beforeSend: function () {
