@@ -152,7 +152,7 @@
                         <td rowspan="2" class="pr-2">
                             <span class="material-symbols-outlined" style="font-size:40px;">record_voice_over</span>
                         </td>
-                        <td class="ml">{{ $memo->name }}레벨</td>
+                        <td class="ml">{{ $memo->name }} | {{ member_level_icon($memo->mylevel) }}</td>
                     </tr>
                     <tr>
                         <td>
