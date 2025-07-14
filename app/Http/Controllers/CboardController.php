@@ -89,7 +89,7 @@ class CboardController extends Controller
                 ->get();
             //print_r(DB::getQueryLog());
         }
-        print_r($memos);
+        //print_r($memos);
         return view("boards.show",['boards' => $boards, 'memos' => $memos]);
     }
 
